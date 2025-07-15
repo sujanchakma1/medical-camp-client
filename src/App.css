@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #0874b6;
+  --color-secondary: #5608cd;
+}
+
+
+.font{
+    font-family: "Alumni Sans SC", sans-serif;
+}
