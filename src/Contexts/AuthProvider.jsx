@@ -14,34 +14,40 @@ import { auth } from "../Firebase/Firebase.config";
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+
   const createUser = (email, password) => {
-    setLoading();
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
+
   const loginUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
-  const googleProvider = new GoogleAuthProvider()
-  const googleLogin = ()=>{
-    setLoading(true)
-    return signInWithPopup(auth,googleProvider)
-  }
-  const logOutUser = ()=>{
-    setLoading(true)
-    return signOut(auth)
-  }
 
-  const updateUserProfile = profileInfo =>{
-    return updateProfile(auth.currentUser, profileInfo)
-  }
+  const googleProvider = new GoogleAuthProvider();
+
+  const googleLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
+
+  const logOutUser = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+
+  const updateUserProfile = (profileInfo) => {
+    return updateProfile(auth.currentUser, profileInfo);
+  };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("inside the user:",currentUser)
+      console.log("inside the user:", currentUser);
       setLoading(false);
     });
+
     return () => {
       unSubscribe();
     };
@@ -54,9 +60,14 @@ const AuthProvider = ({ children }) => {
     logOutUser,
     user,
     loading,
-    updateUserProfile
+    updateUserProfile,
   };
-  return <AuthContext value={authInfo}>{children}</AuthContext>;
+
+  return (
+    <AuthContext value={authInfo}>
+      {children}
+    </AuthContext>
+  );
 };
 
 export default AuthProvider;

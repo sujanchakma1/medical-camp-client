@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBa36U2FhtLcQgOjne0heQFGRJM6LK3dPM",
-  authDomain: "medical-camp-client.firebaseapp.com",
-  projectId: "medical-camp-client",
-  storageBucket: "medical-camp-client.firebasestorage.app",
-  messagingSenderId: "896331488767",
-  appId: "1:896331488767:web:fa5318ead327a14d62dbca"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase

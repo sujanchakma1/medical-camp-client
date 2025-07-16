@@ -1,11 +1,13 @@
 import React from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-import useAxios from "../../../Hook/useAxios";
 import useAuth from "../../../Hook/useAuth";
+import useAxios from "../../../Hook/useAxios";
+
+
 
 const Login = () => {
-  const { loginUser, googleLogin } = useAuth();
+  const {loginUser, googleLogin} = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const axiosInstance = useAxios();
@@ -37,7 +39,7 @@ const Login = () => {
           created_at: new Date().toISOString(),
           last_log_in: new Date().toISOString(),
         };
-        const userRes = await axiosInstance.post("users", userInfo);
+        const userRes = await axiosInstance.post("/users", userInfo);
         console.log("successfully user", userRes.data);
 
         console.log(res.user);
