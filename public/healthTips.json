@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Stay Hydrated During Summer",
+    "shortDescription": "Drink at least 8 glasses of water daily to stay healthy and avoid dehydration.",
+    "category": "Nutrition",
+    "published_date": "2025-07-15",
+    "author": "Dr. Nushrat Jahan"
+  },
+  {
+    "title": "Proper Hand Washing",
+    "shortDescription": "Always wash your hands for 20 seconds with soap to prevent infections.",
+    "category": "Hygiene",
+    "published_date": "2025-07-14",
+    "author": "Dr. Arman Hossain"
+  },
+  {
+    "title": "Mental Health Matters",
+    "shortDescription": "Practice meditation and sleep 7-8 hours a night for emotional balance.",
+    "category": "Mental Health",
+    "published_date": "2025-07-12",
+    "author": "Dr. Sadiya Alam"
+  }
+]

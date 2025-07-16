@@ -4,8 +4,10 @@ import Home from "../Pages/HomePage/Home/Home";
 import RootLayout from "../Layouts/RootLayout/RootLayout";
 import Login from "../Pages/AuthPage/Login/Login";
 import Register from "../Pages/AuthPage/Register/Register";
-import AvailableCamp from "../Layouts/AvailableCamp/AvailableCamp";
-import CampDetails from "../Layouts/CampDetails/CampDetails";
+import CampDetails from "../Pages/CampDetails/CampDetails";
+import AvailableCamp from "../Pages/AvailableCamp/AvailableCamp";
+import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
+import Profile from "../Pages/Dashboard/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,17 @@ const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: "dashboard",
+    Component : DashboardLayout,
+    children:[
+      {
+        path: "profile",
+        Component: Profile
+      }
+    ]
+  }
+  
 ]);
 
 export default router;

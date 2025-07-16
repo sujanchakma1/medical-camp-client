@@ -33,12 +33,12 @@ const PopularCamp = () => {
         {camps.map((camp, index) => (
           <div
             key={index}
-            className="bg-white rounded-2xl shadow-md hover:shadow-2xl"
+            className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
             <img
               src={camp.image}
               alt={camp.camp_name}
-              className="w-full h-52 object-cover"
+              className="w-full h-52 object-cover rounded-t-xl"
             />
             <div className="p-5 space-y-2">
               <h3 className="text-xl font-bold">{camp.camp_name}</h3>

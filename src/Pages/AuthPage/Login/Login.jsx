@@ -42,7 +42,6 @@ const Login = () => {
         const userRes = await axiosInstance.post("/users", userInfo);
         console.log("successfully user", userRes.data);
 
-        console.log(res.user);
         navigate(`${location.state ? location.state : "/"}`);
       })
       .then((error) => {
@@ -50,8 +49,8 @@ const Login = () => {
       });
   };
   return (
-    <div className="flex justify-center">
-      <div className="card w-full max-w-md min-h-screen ">
+    <div className="flex justify-center py-14 ">
+      <div className="card w-full max-w-md min-h-screen">
         <div className="space-y-2 px-5">
           <h1 className="font-extrabold text-3xl">Welcome Back</h1>
           <p className="text-md font-medium">Join Our Camp</p>
@@ -62,7 +61,7 @@ const Login = () => {
             <input
               type="email"
               {...register("email", { required: true })}
-              className="input"
+              className="input w-full"
               placeholder="Email"
             />
             {errors.email?.type === "required" && (
@@ -72,7 +71,7 @@ const Login = () => {
             <input
               type="password"
               {...register("password", { required: true, minLength: 6 })}
-              className="input"
+              className="input w-full"
               placeholder="Password"
             />
             {errors.password?.type === "required" && (

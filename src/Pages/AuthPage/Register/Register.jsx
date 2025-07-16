@@ -48,7 +48,6 @@ const Register = () => {
         } catch (err) {
           console.error("Error saving user to DB:", err);
         }
-
         navigate(location.state ? location.state : "/");
       })
       .catch((error) => {
@@ -67,8 +66,6 @@ const Register = () => {
         };
         const userRes = await axiosInstance.post("users", userInfo);
         console.log("successfully user", userRes.data);
-
-        console.log(res.user);
         navigate(`${location.state ? location.state : "/"}`);
       })
       .then((error) => {
@@ -89,7 +86,7 @@ const Register = () => {
     setProfilePic(res.data.data.url);
   };
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center py-14">
       <div className="card w-full max-w-md min-h-screen">
         <div className="space-y-2 px-5">
           <h1 className="font-extrabold text-5xl">Welcome Back</h1>
@@ -102,7 +99,7 @@ const Register = () => {
             <input
               onChange={handleImage}
               type="file"
-              className="input"
+              className="input w-full"
               placeholder="Your Profile"
             />
             {/* Name */}
@@ -110,7 +107,7 @@ const Register = () => {
             <input
               type="name"
               {...register("name", { required: true })}
-              className="input"
+              className="input w-full"
               placeholder="Your Name"
             />
             {errors.name?.type === "required" && (
@@ -121,7 +118,7 @@ const Register = () => {
             <input
               type="email"
               {...register("email", { required: true })}
-              className="input"
+              className="input w-full"
               placeholder="Email"
             />
             {errors.email?.type === "required" && (
@@ -132,7 +129,7 @@ const Register = () => {
             <input
               type="password"
               {...register("password", { required: true, minLength: 6 })}
-              className="input"
+              className="input w-full"
               placeholder="Password"
             />
             {errors.password?.type === "required" && (

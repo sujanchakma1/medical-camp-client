@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "medical-camp-client"
-  }
+    "default": "medical-center-camp",
+    "staging": "medical-center-camp"
+  },
+  "targets": {},
+  "etags": {}
 }

@@ -5,7 +5,7 @@ import Logo from "../Logo/Logo";
 import useAuth from "../../Hook/useAuth";
 
 const Navbar = () => {
-  const { user,logOutUser } = useAuth();
+  const { user, logOutUser } = useAuth();
   const links = (
     <>
       <li className="link link-hover">
@@ -17,7 +17,7 @@ const Navbar = () => {
     </>
   );
 
-   const handleLogOutUser = () => {
+  const handleLogOutUser = () => {
     logOutUser()
       .then(() => {
         Swal.fire({
@@ -38,7 +38,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-secondary text-white shadow-sm fixed w-full top-0 z-50">
+    <div className="bg-secondary px-5 text-white shadow-sm fixed w-full top-0 z-50">
       <div className="navbar flex justify-between max-w-7xl mx-auto">
         <div className="flex items-center">
           <Logo></Logo>
@@ -49,27 +49,34 @@ const Navbar = () => {
           </div>
           <div className=" flex gap-5 items-center">
             {user ? (
-              <div className="dropdown items-center relative group">
+              <div className="dropdown dropdown-end">
                 <div tabIndex={0} role="button" className="cursor-pointer">
-                  <a className="my-anchor-element">
-                    <img
-                      className="w-12 h-12 rounded-full object-cover"
-                      src={user.photoURL}
-                      alt="Profile"
-                    />
-                  </a>
+                  <img
+                    className="w-12 h-12 rounded-full object-cover"
+                    src={user.photoURL}
+                    alt="Profile"
+                  />
                 </div>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content  bg-gray-500 rounded-box mt-3 w-52 p-2 -left-38 shadow flex gap-5"
+                  className="menu space-y-5 dropdown-content bg-base-300 text-black rounded-box z-1 mt-4 w-52 p-2 shadow-sm"
                 >
-                  {links}
-                  <button
-                  onClick={handleLogOutUser}
-                  className="btn btn-primary btn-sm rounded-lg"
-                >
-                  Log Out
-                </button>
+                  <li className="font-bold text-xl px-3">
+                    {user.displayName}
+                  </li>
+                  <li className="font-semibold">
+                    <Link to="/dashboard">
+                      Dashboard
+                    </Link>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleLogOutUser}
+                      className="btn btn-primary"
+                    >
+                      Log Out
+                    </button>
+                  </li>
                 </ul>
               </div>
             ) : (
