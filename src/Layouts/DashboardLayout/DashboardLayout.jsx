@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import { Menu, X } from "lucide-react";
-import { FaClipboardList, FaEdit, FaPlusCircle, FaUserCircle } from "react-icons/fa";
+import {
+  FaClipboardList,
+  FaEdit,
+  FaPlusCircle,
+  FaUserCircle,
+} from "react-icons/fa";
+import Logo from "../../Shared/Logo/Logo";
 
 const DashboardLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,14 +15,16 @@ const DashboardLayout = () => {
   const toggleSidebar = () => setIsOpen(!isOpen);
 
   return (
-    <div className="flex h-screen overflow-x-auto bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100 max-w-7xl mx-auto">
       {/* Sidebar */}
       <div
-        className={`bg-white top-0 left-0 h-full w-80 shadow-md p-4 fixed lg:static z-20 transition-transform duration-300 ${
+        className={`bg-white top-0 left-0 min-h-screen w-70 shadow-md p-4 fixed lg:static z-20 transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0`}
       >
-        <h2 className="text-2xl font-bold mb-6">Dashboard</h2>
+        <div className="mb-10">
+          <Logo></Logo>
+        </div>
         <nav className="space-y-3">
           <NavLink
             to="/dashboard/profile"
@@ -85,7 +93,7 @@ const DashboardLayout = () => {
       )}
 
       {/* Main Content */}
-      <div className="flex-1 lg:ml-64 overflow-y-auto w-full p-4">
+      <div className="flex-1">
         {/* Topbar Toggle Button for small screens */}
         <div className="lg:hidden flex justify-between items-center mb-4">
           <h1 className="text-xl font-bold">Dashboard</h1>

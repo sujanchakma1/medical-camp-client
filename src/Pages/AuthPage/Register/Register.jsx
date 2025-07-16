@@ -22,7 +22,7 @@ const Register = () => {
 
     createUser(email, password)
       .then(async (result) => {
-        console.log(result.user)
+        console.log(result.user);
         // Update Firebase user profile first
         const profileInfo = {
           displayName: name,
@@ -40,7 +40,7 @@ const Register = () => {
           created_at: new Date().toISOString(),
           last_log_in: new Date().toISOString(),
         };
-        console.log(userData)
+        console.log(userData);
 
         try {
           const response = await axiosInstance.post("/users", userData);
@@ -59,7 +59,9 @@ const Register = () => {
     googleLogin()
       .then(async (res) => {
         const userInfo = {
+          name: res.user.displayName,
           email: res.user.email,
+          photoURL: res.user.photoURL,
           role: "user",
           created_at: new Date().toISOString(),
           last_log_in: new Date().toISOString(),

@@ -34,7 +34,9 @@ const Login = () => {
     googleLogin()
       .then(async (res) => {
         const userInfo = {
+          name: res.user.displayName,
           email: res.user.email,
+          photoURL: res.user.photoURL,
           role: "user",
           created_at: new Date().toISOString(),
           last_log_in: new Date().toISOString(),
