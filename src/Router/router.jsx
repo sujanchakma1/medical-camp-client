@@ -11,6 +11,8 @@ import Profile from "../Pages/Dashboard/Profile/Profile";
 import AddCamp from "../Pages/Dashboard/AddCamp/AddCamp";
 import ManageCamp from "../Pages/Dashboard/ManageCamp/ManageCamp";
 import UpdateCamp from "../Pages/Dashboard/UpdateCamp/UpdateCamp";
+import ManageRegisteredCamps from "../Pages/Dashboard/ManageRegisteredCamps/ManageRegisteredCamps";
+import Payment from "../Pages/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +57,14 @@ const router = createBrowserRouter([
       {
         path: "update-camp/:id",
         Component: UpdateCamp
+      },
+      {
+        path: "manage-registered",
+        Component: ManageRegisteredCamps
+      },
+      {
+        path: "payment/:participantId",
+        Component: Payment
       }
     ]
   }
