@@ -13,6 +13,10 @@ import ManageCamp from "../Pages/Dashboard/ManageCamp/ManageCamp";
 import UpdateCamp from "../Pages/Dashboard/UpdateCamp/UpdateCamp";
 import ManageRegisteredCamps from "../Pages/Dashboard/ManageRegisteredCamps/ManageRegisteredCamps";
 import Payment from "../Pages/Payment/Payment";
+import MyCamp from "../Pages/Dashboard/MyCamp/MyCamp";
+import Analytics from "../Pages/Dashboard/Analytics/Analytics";
+import RegisteredCamps from "../Pages/Dashboard/RegisteredCamps/RegisteredCamps";
+import FeedbackForm from "../Pages/Dashboard/FeedbackForm/FeedbackForm";
 
 const router = createBrowserRouter([
   {
@@ -30,45 +34,58 @@ const router = createBrowserRouter([
       },
       {
         path: "availableCamps",
-        Component: AvailableCamp
+        Component: AvailableCamp,
       },
       {
-        path: 'camp-details/:id',
-        Component: CampDetails
-      }
+        path: "camp-details/:id",
+        Component: CampDetails,
+      },
     ],
   },
   {
     path: "dashboard",
-    Component : DashboardLayout,
-    children:[
+    Component: DashboardLayout,
+    children: [
       {
         path: "profile",
-        Component: Profile
+        Component: Profile,
+      },
+      {
+        path: "my-camp",
+        Component: MyCamp,
       },
       {
         path: "add-camp",
-        Component: AddCamp
+        Component: AddCamp,
       },
       {
         path: "manage-camp",
-        Component: ManageCamp
+        Component: ManageCamp,
       },
       {
         path: "update-camp/:id",
-        Component: UpdateCamp
+        Component: UpdateCamp,
       },
       {
         path: "manage-registered",
-        Component: ManageRegisteredCamps
+        Component: ManageRegisteredCamps,
       },
       {
         path: "payment/:participantId",
-        Component: Payment
+        Component: Payment,
+      },
+      // Participant route
+      { path: "analytics", Component: Analytics },
+      {
+        path: "registered-camps",
+        Component: RegisteredCamps
+      },
+      {
+        path: "feedback/:id",
+        Component: FeedbackForm
       }
-    ]
-  }
-  
+    ],
+  },
 ]);
 
 export default router;

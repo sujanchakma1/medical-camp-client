@@ -80,7 +80,7 @@ const AvailableCamp = () => {
             <img src={camp.image} alt={camp.camp_name} className="w-full h-52 object-cover" />
             <div className="p-5 flex flex-col gap-2 flex-grow">
               <h3 className="text-xl font-bold">{camp.camp_name}</h3>
-              <p className="text-sm text-gray-600">Fees: {camp.camp_fees}</p>
+              <p className="text-sm text-gray-600">Fees: ৳{camp.camp_fees}</p>
               <p className="text-sm text-gray-600">{camp.date_time}</p>
               <p className="text-sm text-gray-600">{camp.location}</p>
               <p className="text-sm text-gray-600">{camp.healthcare_professional}</p>

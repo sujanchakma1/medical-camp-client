@@ -3,109 +3,97 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import toast from "react-hot-toast";
-import useAuth from "../../Hook/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import useAuth from "../../Hook/useAuth";
 
 const PaymentForm = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const { user } = useAuth();
   const stripe = useStripe();
   const elements = useElements();
-  const { participantId } = useParams(); // param from route
+  const { participantId } = useParams();
   const axiosSecure = useAxiosSecure();
+  console.log(participantId);
   const [error, setError] = useState("");
 
-  // ⏳ Load participant data
   const { data: participantInfo, isPending } = useQuery({
     queryKey: ["participant", participantId],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/campParticipants/${participantId}`);
+      const res = await axiosSecure.get(`participant/${participantId}`);
       return res.data;
     },
-    
   });
-  console.log(participantId)
+  if (isPending) {
+    return "...loading";
+  }
+  console.log(participantInfo);
 
-  if (isPending) return "...loading";
-
-  const amount = participantInfo?.camp_fees || 0;
+  const amount = participantInfo.camp_fees;
   const amountInCents = amount * 100;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!stripe || !elements) return;
-
+    if (!stripe || !elements) {
+      return;
+    }
     const card = elements.getElement(CardElement);
-    if (!card) return;
-
+    if (!card) {
+      return;
+    }
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
     });
-
     if (error) {
       setError(error.message);
-      return;
     } else {
       setError("");
-      console.log("Payment Method:", paymentMethod);
+      console.log("payment method", paymentMethod);
     }
-
-    // 🎯 Create Payment Intent
-    const res = await axiosSecure.post("/create-payment-intent", {
+    const res = await axiosSecure.post("create-payment-intent", {
       amountInCents,
       participantId,
     });
-
     const clientSecret = res.data.clientSecret;
-
     const result = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
-        card,
+        card: elements.getElement(CardElement),
         billing_details: {
-          name: user.displayName,
-          email: user.email,
+          name: `${user.displayName}`,
+          email: `${user.email}`,
         },
       },
     });
-
     if (result.error) {
       setError(result.error.message);
     } else {
       setError("");
       if (result.paymentIntent.status === "succeeded") {
+        console.log(result);
         const paymentData = {
-          participant_id: participantId,
+          participantId,
           email: user.email,
           amount,
           transactionId: result.paymentIntent.id,
           paymentMethod: result.paymentIntent.payment_method_types,
-          camp_name: participantInfo?.camp_name,
-          camp_id: participantInfo?.camp_id,
-          payment_time: new Date().toISOString(),
         };
-
-        // ✅ Save payment to DB
         const paymentRes = await axiosSecure.post("/payments", paymentData);
-
-        if (paymentRes.data.updated) {
-          toast.success(`Payment successful for ${participantInfo?.camp_name}`);
-          navigate("/dashboard/registered-camps");
-        } else {
-          toast.error("Payment saved but update failed.");
+        if (paymentRes.data.insertedId) {
+          console.log(paymentRes.data)
+          toast.success(`Payment successfully! ${participantInfo.camp_name}`);
+          navigate('/dashboard/my-camp')
         }
       }
     }
   };
-
   return (
     <div>
       <form
         onSubmit={handleSubmit}
         className="bg-white space-y-4 p-6 rounded-xl shadow-md w-full max-w-md mx-auto"
       >
-        <CardElement className="p-2 border rounded" />
+        <CardElement className="p-2 border rounded "></CardElement>
         <button
           type="submit"
           className="btn btn-primary w-full text-black"

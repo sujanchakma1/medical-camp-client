@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import { Menu, X } from "lucide-react";
 import {
+  FaCampground,
+  FaChartBar,
   FaClipboardList,
   FaEdit,
   FaPlusCircle,
@@ -26,6 +28,7 @@ const DashboardLayout = () => {
           <Logo></Logo>
         </div>
         <nav className="space-y-3">
+          {/* Organizer route */}
           <NavLink
             to="/dashboard/profile"
             className={({ isActive }) =>
@@ -80,6 +83,62 @@ const DashboardLayout = () => {
           >
             <FaClipboardList />
             <span>Manage Registered Camp</span>
+          </NavLink>
+
+          {/* Participant  */}
+          <NavLink
+            to="/dashboard/analytics"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
+                isActive
+                  ? "bg-primary text-white"
+                  : "hover:bg-gray-100 text-gray-700"
+              }`
+            }
+          >
+            <FaChartBar />
+            <span>Analytics</span>
+          </NavLink>
+          <NavLink
+            to="/dashboard/profile"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
+                isActive
+                  ? "bg-primary text-white"
+                  : "hover:bg-gray-100 text-gray-700"
+              }`
+            }
+          >
+            <FaUserCircle />
+            <span>Participant Profile</span>
+          </NavLink>
+
+          <NavLink
+            to="/dashboard/my-camp"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
+                isActive
+                  ? "bg-primary text-white"
+                  : "hover:bg-gray-100 text-gray-700"
+              }`
+            }
+          >
+            <FaCampground />
+            <span>My Camp</span>
+          </NavLink>
+
+          <NavLink
+            to="/dashboard/registered-camps"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
+                isActive
+                  ? "bg-primary text-white"
+                  : "hover:bg-gray-100 text-gray-700"
+              }`
+            }
+          >
+            <FaClipboardList />
+            <span>Registered Camps</span>
           </NavLink>
         </nav>
       </div>

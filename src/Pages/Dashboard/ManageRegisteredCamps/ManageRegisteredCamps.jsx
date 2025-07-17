@@ -11,7 +11,7 @@ const ManageRegisteredCamps = () => {
   const { data: registeredCamps = [], isLoading } = useQuery({
     queryKey: ["allRegisteredCamps"],
     queryFn: async () => {
-      const res = await axiosSecure.get('/registered-camps');
+      const res = await axiosSecure.get("/registered-camps");
       return res.data;
     },
   });
@@ -112,22 +112,21 @@ const ManageRegisteredCamps = () => {
                     )}
                   </td>
                   <td>
-                    <button
-                      onClick={() =>
-                        handleCancel(
-                          camp._id,
-                          camp.paymentStatus === "Paid",
-                          camp.confirmationStatus === "Confirmed"
-                        )
-                      }
-                      className="btn btn-sm btn-error"
-                      disabled={
-                        camp.paymentStatus === "Paid" &&
-                        camp.confirmationStatus === "Confirmed"
-                      }
-                    >
-                      Cancel
-                    </button>
+                    {camp.payment_status === "Paid" ? (
+                      <button
+                        disabled
+                        className="btn btn-sm btn-error cursor-not-allowed"
+                      >
+                        Cancel
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleCancel(camp._id)}
+                        className="btn btn-sm btn-error"
+                      >
+                        Cancel
+                      </button>
+                    )}
                   </td>
                 </tr>
               ))}

@@ -42,7 +42,7 @@ const PopularCamp = () => {
             />
             <div className="p-5 space-y-2">
               <h3 className="text-xl font-bold">{camp.camp_name}</h3>
-              <p className="text-sm text-gray-600">Fees: {camp.camp_fees}</p>
+              <p className="text-sm text-gray-600">Fees: ৳{camp.camp_fees}</p>
               <p className="text-sm text-gray-600">{camp.date_time}</p>
               <p className="text-sm text-gray-600">{camp.location}</p>
               <p className="text-sm text-gray-600">
