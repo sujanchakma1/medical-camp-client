@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hook/useAuth";
 
 const FeedbackForm = ({ campId, participantId, onSubmitted }) => {
   const { register, handleSubmit, reset } = useForm();
   const axiosSecure = useAxiosSecure();
   const [submitting, setSubmitting] = useState(false);
+  const {user} = useAuth()
 
   const onSubmit = async (data) => {
     setSubmitting(true);
@@ -15,6 +17,7 @@ const FeedbackForm = ({ campId, participantId, onSubmitted }) => {
         camp_id: campId,
         participant_id: participantId,
         rating: parseInt(data.rating),
+        participant_name : user?.displayName,
         feedback: data.feedback,
         date: new Date(),
       };
