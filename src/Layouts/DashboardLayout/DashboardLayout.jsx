@@ -10,11 +10,24 @@ import {
   FaUserCircle,
 } from "react-icons/fa";
 import Logo from "../../Shared/Logo/Logo";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
+import useAuth from "../../Hook/useAuth";
+import { useQuery } from "@tanstack/react-query";
 
 const DashboardLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleSidebar = () => setIsOpen(!isOpen);
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+
+  const { data: userProfile } = useQuery({
+    queryKey: ["userProfile", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users?email=${user.email}`);
+      return res.data;
+    },
+    enabled: !!user?.email,
+  });
 
   return (
     <div className="flex min-h-screen bg-gray-100 max-w-7xl mx-auto">
@@ -29,117 +42,124 @@ const DashboardLayout = () => {
         </div>
         <nav className="space-y-3">
           {/* Organizer route */}
-          <NavLink
-            to="/dashboard/profile"
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
-                isActive
-                  ? "bg-primary text-white"
-                  : "hover:bg-gray-100 text-gray-700"
-              }`
-            }
-          >
-            <FaUserCircle />
-            <span>Organizer Profile</span>
-          </NavLink>
+          {userProfile?.role === "admin" && (
+            <>
+              <NavLink
+                to="/dashboard/profile"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "hover:bg-gray-100 text-gray-700"
+                  }`
+                }
+              >
+                <FaUserCircle />
+                <span>Organizer Profile</span>
+              </NavLink>
 
-          <NavLink
-            to="/dashboard/add-camp"
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
-                isActive
-                  ? "bg-primary text-white"
-                  : "hover:bg-gray-100 text-gray-700"
-              }`
-            }
-          >
-            <FaPlusCircle />
-            <span>Add a Camp</span>
-          </NavLink>
+              <NavLink
+                to="/dashboard/add-camp"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "hover:bg-gray-100 text-gray-700"
+                  }`
+                }
+              >
+                <FaPlusCircle />
+                <span>Add a Camp</span>
+              </NavLink>
 
-          <NavLink
-            to="/dashboard/manage-camp"
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
-                isActive
-                  ? "bg-primary text-white"
-                  : "hover:bg-gray-100 text-gray-700"
-              }`
-            }
-          >
-            <FaEdit />
-            <span>Manage Camp</span>
-          </NavLink>
+              <NavLink
+                to="/dashboard/manage-camp"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "hover:bg-gray-100 text-gray-700"
+                  }`
+                }
+              >
+                <FaEdit />
+                <span>Manage Camp</span>
+              </NavLink>
 
-          <NavLink
-            to="/dashboard/manage-registered"
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
-                isActive
-                  ? "bg-primary text-white"
-                  : "hover:bg-gray-100 text-gray-700"
-              }`
-            }
-          >
-            <FaClipboardList />
-            <span>Manage Registered Camp</span>
-          </NavLink>
+              <NavLink
+                to="/dashboard/manage-registered"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "hover:bg-gray-100 text-gray-700"
+                  }`
+                }
+              >
+                <FaClipboardList />
+                <span>Manage Registered Camp</span>
+              </NavLink>
+            </>
+          )}
 
           {/* Participant  */}
-          <NavLink
-            to="/dashboard/analytics"
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
-                isActive
-                  ? "bg-primary text-white"
-                  : "hover:bg-gray-100 text-gray-700"
-              }`
-            }
-          >
-            <FaChartBar />
-            <span>Analytics</span>
-          </NavLink>
-          <NavLink
-            to="/dashboard/profile"
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
-                isActive
-                  ? "bg-primary text-white"
-                  : "hover:bg-gray-100 text-gray-700"
-              }`
-            }
-          >
-            <FaUserCircle />
-            <span>Participant Profile</span>
-          </NavLink>
-
-          <NavLink
-            to="/dashboard/my-camp"
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
-                isActive
-                  ? "bg-primary text-white"
-                  : "hover:bg-gray-100 text-gray-700"
-              }`
-            }
-          >
-            <FaCampground />
-            <span>My Camp</span>
-          </NavLink>
-
-          <NavLink
-            to="/dashboard/registered-camps"
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
-                isActive
-                  ? "bg-primary text-white"
-                  : "hover:bg-gray-100 text-gray-700"
-              }`
-            }
-          >
-            <FaClipboardList />
-            <span>Registered Camps</span>
-          </NavLink>
+          {userProfile?.role === "user" && (
+            <>
+              {" "}
+              <NavLink
+                to="/dashboard/analytics"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "hover:bg-gray-100 text-gray-700"
+                  }`
+                }
+              >
+                <FaChartBar />
+                <span>Analytics</span>
+              </NavLink>
+              <NavLink
+                to="/dashboard/profile"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "hover:bg-gray-100 text-gray-700"
+                  }`
+                }
+              >
+                <FaUserCircle />
+                <span>Participant Profile</span>
+              </NavLink>
+              <NavLink
+                to="/dashboard/my-camp"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "hover:bg-gray-100 text-gray-700"
+                  }`
+                }
+              >
+                <FaCampground />
+                <span>My Camp</span>
+              </NavLink>
+              <NavLink
+                to="/dashboard/registered-camps"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "hover:bg-gray-100 text-gray-700"
+                  }`
+                }
+              >
+                <FaClipboardList />
+                <span>Registered Camps</span>
+              </NavLink>
+            </>
+          )}
         </nav>
       </div>
 

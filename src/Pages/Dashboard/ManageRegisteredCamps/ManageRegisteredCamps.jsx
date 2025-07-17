@@ -21,6 +21,7 @@ const ManageRegisteredCamps = () => {
     mutationFn: async (id) => {
       return await axiosSecure.patch(`/confirm-registration/${id}`);
     },
+    
     onSuccess: () => {
       queryClient.invalidateQueries(["allRegisteredCamps"]);
     },
@@ -100,7 +101,7 @@ const ManageRegisteredCamps = () => {
                     </span>
                   </td>
                   <td>
-                    {camp.confirmation_status === "confirmed" ? (
+                    {camp.confirmation_status === "Confirmed" ? (
                       <span className="badge badge-info">Confirmed</span>
                     ) : (
                       <button
