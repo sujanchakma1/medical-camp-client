@@ -36,7 +36,6 @@ const HomepageFeedback = () => {
           <div
             key={fb._id || idx}
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: idx * 0.1 }}
             viewport={{ once: true }}
             className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"

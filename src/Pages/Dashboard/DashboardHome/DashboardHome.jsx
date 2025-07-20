@@ -1,8 +1,8 @@
 import React from "react";
-import useUserRole from "../../Hook/useUserRole";
-import Loading from "../Loading/Loading";
-import AdminHome from "../Dashboard/AdminHome/AdminHome";
-import UserHome from "../Dashboard/UserHome/UserHome";
+import AdminHome from "../AdminHome/AdminHome";
+import UserHome from "../UserHome/UserHome";
+import useUserRole from "../../../Hook/useUserRole";
+import Loading from "../../Loading/Loading";
 
 const DashboardHome = () => {
   const { role, isRoleLoading } = useUserRole();

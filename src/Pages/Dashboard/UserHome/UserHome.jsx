@@ -19,7 +19,6 @@ const UserHome = () => {
 
   const {
     totalRegisteredCamps = 0,
-    totalPaidAmount = 0,
     confirmedCamps = 0,
   } = stats;
 
@@ -36,10 +35,6 @@ const UserHome = () => {
         <div className="bg-green-100 rounded-xl p-5 shadow-md">
           <p className="text-gray-700">Confirmed Camps</p>
           <h2 className="text-2xl font-semibold">{confirmedCamps}</h2>
-        </div>
-        <div className="bg-yellow-100 rounded-xl p-5 shadow-md">
-          <p className="text-gray-700">Total Paid</p>
-          <h2 className="text-2xl font-semibold">৳ {totalPaidAmount}</h2>
         </div>
       </div>
     </div>
