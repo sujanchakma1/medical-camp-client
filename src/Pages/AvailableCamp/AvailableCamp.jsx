@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import Loading from "../Loading/Loading";
 
 const AvailableCamp = () => {
   const axiosInstance = useAxiosSecure();
@@ -18,7 +19,7 @@ const AvailableCamp = () => {
     },
   });
 
-  if (isLoading) return <div className="text-center py-10">Loading...</div>;
+  if (isLoading) return <Loading></Loading>;
   if (isError) return <div className="text-center text-red-500">Failed to load camps.</div>;
 
   // 🔍 Filter by search
@@ -59,7 +60,7 @@ const AvailableCamp = () => {
           onChange={(e) => setSortBy(e.target.value)}
         >
           <option value="default">Sort By</option>
-          <option value="registered">Most Registered</option>
+          <option value="registered">Most Participant</option>
           <option value="fees">Camp Fees (Low → High)</option>
           <option value="name">Alphabetical (A–Z)</option>
         </select>

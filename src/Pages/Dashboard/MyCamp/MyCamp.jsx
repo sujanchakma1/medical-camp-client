@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { FaTrash, FaMoneyCheckAlt } from "react-icons/fa";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import useAuth from "../../../Hook/useAuth";
+import Loading from "../../Loading/Loading";
 
 const MyCamp = () => {
   const axiosSecure = useAxiosSecure();
@@ -22,7 +23,7 @@ const MyCamp = () => {
     enabled: !!user?.email,
   });
   if (isLoading) {
-    return <p className="text-center py-10">Loading...</p>;
+    return <Loading></Loading>;
   }
 
   // ✅ Delete handler

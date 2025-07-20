@@ -2,6 +2,7 @@ import React from "react";
 import Swal from "sweetalert2";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import useAxios from "../../../Hook/useAxios";
+import Loading from "../../Loading/Loading";
 
 const ManageRegisteredCamps = () => {
   const axiosSecure = useAxios();
@@ -62,10 +63,10 @@ const ManageRegisteredCamps = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-6">Manage Registered Camps</h2>
+      <h2 className="text-3xl text-center font-bold mb-6">Manage Registered Camps</h2>
 
       {isLoading ? (
-        <p>Loading...</p>
+        <Loading></Loading>
       ) : (
         <div className="overflow-x-auto">
           <table className="table w-full">

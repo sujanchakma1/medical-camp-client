@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import useAuth from "../../../Hook/useAuth";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import Loading from "../../Loading/Loading";
 
 const Analytics = () => {
   const { user } = useAuth();
@@ -29,7 +30,7 @@ const Analytics = () => {
     enabled: !!user?.email,
   });
 
-  if (isLoading) return <p className="text-center">Loading chart...</p>;
+  if (isLoading) return <Loading></Loading>;
   if (isError)
     return <p className="text-center text-red-500">Failed to load data.</p>;
 

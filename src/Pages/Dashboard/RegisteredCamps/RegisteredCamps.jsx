@@ -27,7 +27,7 @@ const RegisteredCamps = () => {
       confirmButtonText: "Yes, Cancel",
     });
     if (confirm.isConfirmed) {
-      await axiosSecure.delete(`/registered-camps/${id}`);
+      await axiosSecure.delete(`/cancel-registration/${id}`);
       Swal.fire("Cancelled", "Your registration has been removed.", "success");
       refetch();
     }

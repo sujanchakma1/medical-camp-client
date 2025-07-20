@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import useAuth from "../../Hook/useAuth";
+import Loading from "../Loading/Loading";
 
 const PaymentForm = () => {
   const navigate = useNavigate()
@@ -24,7 +25,7 @@ const PaymentForm = () => {
     },
   });
   if (isPending) {
-    return "...loading";
+    return <Loading></Loading>;
   }
   console.log(participantInfo);
 

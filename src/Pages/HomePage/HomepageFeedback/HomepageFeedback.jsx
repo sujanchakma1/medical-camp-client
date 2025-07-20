@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Star } from "lucide-react";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import Loading from "../../Loading/Loading";
 
 const HomepageFeedback = () => {
   const axiosSecure = useAxiosSecure();
@@ -19,7 +20,7 @@ const HomepageFeedback = () => {
   });
 
   if (isLoading)
-    return <div className="text-center py-10">Loading feedbacks...</div>;
+    return <Loading></Loading>;
   if (isError)
     return (
       <div className="text-center text-red-500 py-10">

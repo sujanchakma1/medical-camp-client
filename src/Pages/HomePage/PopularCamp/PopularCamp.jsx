@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { Link } from "react-router";
+import Loading from "../../Loading/Loading";
 
 const PopularCamp = () => {
   const axiosSecure = useAxiosSecure();
@@ -18,7 +19,7 @@ const PopularCamp = () => {
     },
   });
 
-  if (isLoading) return <div className="text-center py-10">Loading...</div>;
+  if (isLoading) return <Loading></Loading>;
   if (isError)
     return (
       <div className="text-center text-red-500">Something went wrong!</div>

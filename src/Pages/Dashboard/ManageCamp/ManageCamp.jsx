@@ -5,6 +5,7 @@ import useAxiosSecure from "../../../Hook/useAxiosSecure";
 
 // Icons
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import Loading from "../../Loading/Loading";
 
 const ManageCamp = () => {
   const axiosSecure = useAxiosSecure();
@@ -48,7 +49,7 @@ const ManageCamp = () => {
     });
   };
 
-  if (isLoading) return <p className="text-center py-10">Loading Camps...</p>;
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div className="p-4 overflow-x-auto">

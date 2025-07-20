@@ -3,6 +3,7 @@ import useAuth from "../../../Hook/useAuth";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import Loading from "../../Loading/Loading";
 
 // QueryClient init
 const Profile = () => {
@@ -56,7 +57,7 @@ const Profile = () => {
     updateMutation.mutate(formdata);
   };
 
-  if (isLoading) return <p className="text-center py-10">Loading profile...</p>;
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div className=" p-6 mt-6">

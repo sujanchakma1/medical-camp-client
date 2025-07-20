@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import Loading from "../../Loading/Loading";
 
 const UpdateCamp = () => {
   const { id } = useParams();
@@ -63,7 +64,7 @@ const UpdateCamp = () => {
     updateMutation.mutate(data);
   };
 
-  if (isLoading) return <p className="text-center py-10">Loading camp data...</p>;
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow">

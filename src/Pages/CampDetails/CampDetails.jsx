@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import useAuth from "../../Hook/useAuth";
+import Loading from "../Loading/Loading";
 
 const CampDetails = () => {
   const { id } = useParams();
@@ -26,7 +27,7 @@ const CampDetails = () => {
     enabled: !!id,
   });
 
-  if (isLoading) return <div className="text-center py-10">Loading...</div>;
+  if (isLoading) return <Loading></Loading>;
   if (!camp)
     return <div className="text-center text-red-500">Camp not found</div>;
 

@@ -17,6 +17,11 @@ import MyCamp from "../Pages/Dashboard/MyCamp/MyCamp";
 import Analytics from "../Pages/Dashboard/Analytics/Analytics";
 import RegisteredCamps from "../Pages/Dashboard/RegisteredCamps/RegisteredCamps";
 import FeedbackForm from "../Pages/Dashboard/FeedbackForm/FeedbackForm";
+import PrivateRoute from "../Routes/PrivateRoute";
+import AdminRoute from "../Routes/AdminRoute";
+import ParticipantRoute from "../Routes/ParticipantRoute";
+import Forbidden from "../Pages/ForbiddenPage/Forbidden";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -38,54 +43,107 @@ const router = createBrowserRouter([
       },
       {
         path: "camp-details/:id",
-        Component: CampDetails,
+        element: (
+          <PrivateRoute>
+            <CampDetails></CampDetails>
+          </PrivateRoute>
+        ),
       },
     ],
   },
   {
     path: "dashboard",
-    Component: DashboardLayout,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "profile",
         Component: Profile,
       },
-      {
-        path: "my-camp",
-        Component: MyCamp,
-      },
+
       {
         path: "add-camp",
-        Component: AddCamp,
+        element: (
+          <AdminRoute>
+            <AddCamp></AddCamp>
+          </AdminRoute>
+        ),
       },
       {
         path: "manage-camp",
-        Component: ManageCamp,
+        element: (
+          <AdminRoute>
+            <ManageCamp></ManageCamp>
+          </AdminRoute>
+        ),
       },
       {
         path: "update-camp/:id",
-        Component: UpdateCamp,
+        element: (
+          <AdminRoute>
+            <UpdateCamp></UpdateCamp>
+          </AdminRoute>
+        ),
       },
       {
         path: "manage-registered",
-        Component: ManageRegisteredCamps,
+        element: (
+          <AdminRoute>
+            <ManageRegisteredCamps></ManageRegisteredCamps>
+          </AdminRoute>
+        ),
       },
+
+      // Participant
       {
         path: "payment/:participantId",
-        Component: Payment,
+        element: (
+          <ParticipantRoute>
+            <Payment></Payment>
+          </ParticipantRoute>
+        ),
       },
-      // Participant route
-      { path: "analytics", Component: Analytics },
+      {
+        path: "my-camp",
+        element: (
+          <ParticipantRoute>
+            <MyCamp></MyCamp>
+          </ParticipantRoute>
+        ),
+      },
+      {
+        path: "analytics",
+        element: (
+          <ParticipantRoute>
+            <Analytics></Analytics>
+          </ParticipantRoute>
+        ),
+      },
       {
         path: "registered-camps",
-        Component: RegisteredCamps
+        element: (
+          <ParticipantRoute>
+            <RegisteredCamps></RegisteredCamps>
+          </ParticipantRoute>
+        ),
       },
       {
         path: "feedback/:id",
-        Component: FeedbackForm
-      }
+        element: <FeedbackForm></FeedbackForm>,
+      },
     ],
   },
+  {
+    path: "forbidden",
+    Component: Forbidden,
+  },
+  {
+    path: "*",
+    Component: ErrorPage
+  }
 ]);
 
 export default router;
