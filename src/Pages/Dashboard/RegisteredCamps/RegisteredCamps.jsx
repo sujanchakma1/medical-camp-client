@@ -61,7 +61,7 @@ const RegisteredCamps = () => {
                       Paid <FaCheckCircle className="inline" />
                     </span>
                   ) : (
-                    <Link to={`/payment/${camp._id}`}>
+                    <Link to={`/dashboard/payment/${camp._id}`}>
                       <button className="bg-blue-500 text-white px-3 py-1 rounded">Pay</button>
                     </Link>
                   )}

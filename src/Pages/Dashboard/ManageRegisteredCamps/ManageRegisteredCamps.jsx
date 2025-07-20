@@ -1,40 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import useAxios from "../../../Hook/useAxios";
 import Loading from "../../Loading/Loading";
 
 const ManageRegisteredCamps = () => {
   const axiosSecure = useAxios();
-  const queryClient = useQueryClient();
 
-  // 🔍 Fetch all registered participants (for admin)
-  const { data: registeredCamps = [], isLoading } = useQuery({
-    queryKey: ["allRegisteredCamps"],
-    queryFn: async () => {
-      const res = await axiosSecure.get("/registered-camps");
-      return res.data;
-    },
-  });
+  const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [registeredCamps, setRegisteredCamps] = useState([]);
 
-  // ✅ Confirm status mutation
+  // Load initial data
+  const fetchCamps = async (campName = "") => {
+    setLoading(true);
+    try {
+      const res = await axiosSecure.get(`/registered-camps${campName ? `?camp_name=${campName}` : ""}`);
+      setRegisteredCamps(res.data);
+    } catch (err) {
+      console.error("Failed to fetch registered camps:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCamps(); // load all initially
+  }, []);
+
+  // Confirm status mutation
   const confirmMutation = useMutation({
     mutationFn: async (id) => {
       return await axiosSecure.patch(`/confirm-registration/${id}`);
     },
-    
     onSuccess: () => {
-      queryClient.invalidateQueries(["allRegisteredCamps"]);
+      fetchCamps(searchTerm);
     },
   });
 
-  // ❌ Cancel registration
+  // Cancel registration
   const cancelMutation = useMutation({
     mutationFn: async (id) => {
       return await axiosSecure.delete(`/cancel-registration/${id}`);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["allRegisteredCamps"]);
+      fetchCamps(searchTerm);
     },
   });
 
@@ -61,12 +71,27 @@ const ManageRegisteredCamps = () => {
     });
   };
 
+  const handleSearch = () => {
+    fetchCamps(searchTerm.trim());
+  };
+
   return (
     <div className="p-4">
       <h2 className="text-3xl text-center font-bold mb-6">Manage Registered Camps</h2>
 
-      {isLoading ? (
-        <Loading></Loading>
+      <div className="flex gap-2 mb-4 max-w-md">
+        <input
+          type="text"
+          placeholder="Search by Camp Name"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="input input-bordered w-full"
+        />
+        <button onClick={handleSearch} className="btn btn-primary">Search</button>
+      </div>
+
+      {loading ? (
+        <Loading />
       ) : (
         <div className="overflow-x-auto">
           <table className="table w-full">

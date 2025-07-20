@@ -22,6 +22,7 @@ import AdminRoute from "../Routes/AdminRoute";
 import ParticipantRoute from "../Routes/ParticipantRoute";
 import Forbidden from "../Pages/ForbiddenPage/Forbidden";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import DashboardHome from "../Pages/DashboardHome/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        index: true,
+        Component: DashboardHome,
+      },
       {
         path: "profile",
         Component: Profile,
@@ -142,8 +147,8 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    Component: ErrorPage
-  }
+    Component: ErrorPage,
+  },
 ]);
 
 export default router;

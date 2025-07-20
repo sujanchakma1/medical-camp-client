@@ -16,7 +16,6 @@ const useUserRole = () => {
     },
     enabled: !!email, // will only run if email exists
   });
-  console.log(roleData)
 
   return {
     role: roleData?.role,
