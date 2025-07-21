@@ -67,7 +67,7 @@ const CampDetails = () => {
 
   return (
     <div className="py-10 px-4 max-w-6xl mx-auto">
-      <div className="bg-white shadow-lg rounded-2xl overflow-hidden">
+      <div className="bg-gradient-to-b from-secondary to-blue-100 shadow-lg rounded-2xl overflow-hidden">
         <img
           src={camp.image}
           alt={camp.camp_name}

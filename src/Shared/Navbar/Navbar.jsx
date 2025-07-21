@@ -38,7 +38,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-secondary px-5 text-white shadow-sm fixed w-full top-0 z-50">
+    <div className="bg-gradient-to-r from-blue-100 to-secondary px-5 text-gray-800 shadow-sm fixed w-full top-0 z-50">
       <div className="navbar flex justify-between max-w-7xl mx-auto">
         <div className="flex items-center">
           <Logo></Logo>

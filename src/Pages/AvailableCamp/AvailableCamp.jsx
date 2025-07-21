@@ -77,7 +77,7 @@ const AvailableCamp = () => {
       {/* 🔳 Cards */}
       <div className={`grid gap-6 ${isTwoColumn ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"}`}>
         {sortedCamps.map((camp) => (
-          <div key={camp._id} className="bg-white rounded-2xl shadow-md flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <div key={camp._id} className="bg-gradient-to-b from-secondary to-blue-100 rounded-2xl shadow-md flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <img src={camp.image} alt={camp.camp_name} className="w-full h-52 object-cover" />
             <div className="p-5 flex flex-col gap-2 flex-grow">
               <h3 className="text-xl font-bold">{camp.camp_name}</h3>
@@ -89,7 +89,7 @@ const AvailableCamp = () => {
 
               <div className="mt-auto flex justify-end pt-4">
                 <Link to={`/camp-details/${camp._id}`}>
-                  <button className="btn btn-sm btn-secondary ">Details</button>
+                  <button className="btn btn-sm btn-primary ">Details</button>
                 </Link>
               </div>
             </div>

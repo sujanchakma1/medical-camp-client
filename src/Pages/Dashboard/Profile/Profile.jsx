@@ -61,11 +61,11 @@ const Profile = () => {
 
   return (
     <div className=" p-6 mt-6">
-      <div className="flex items-center gap-6">
+      <div className="items-center gap-6">
         <img
           src={userProfile?.photoURL}
           alt="Profile"
-          className="w-24 h-24 rounded-full object-cover border"
+          className="w-32 h-32 rounded-full object-cover border"
         />
         <div>
           <h2 className="text-2xl font-semibold">{userProfile?.name}</h2>

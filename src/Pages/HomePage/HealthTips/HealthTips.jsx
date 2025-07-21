@@ -17,7 +17,7 @@ const HealthTips = () => {
         {tips.map((tip, index) => (
           <div
             key={index}
-            className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            className="bg-gradient-to-r from-blue-100 to-secondary rounded-xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
             <h3 className="text-xl font-semibold text-gray-800 mb-2">{tip.title}</h3>
             <p className="text-gray-600 text-sm mb-3">{tip.shortDescription}</p>

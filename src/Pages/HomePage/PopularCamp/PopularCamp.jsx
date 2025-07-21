@@ -34,7 +34,7 @@ const PopularCamp = () => {
         {camps.map((camp, index) => (
           <div
             key={index}
-            className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            className="bg-gradient-to-b from-secondary to-blue-100 border border-gray-200 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
             <img
               src={camp.image}
@@ -54,7 +54,7 @@ const PopularCamp = () => {
               </p>
               <div className="mt-auto flex justify-end pt-4">
                 <Link to={`/camp-details/${camp._id}`}>
-                  <button className="btn btn-sm btn-secondary ">Details</button>
+                  <button className="btn btn-sm btn-primary ">Details</button>
                 </Link>
               </div>
             </div>
@@ -62,7 +62,7 @@ const PopularCamp = () => {
         ))}
       </div>
       <Link className="flex justify-center py-10" to="/availableCamps">
-        <button className="btn btn-primary">See All Camps</button>
+        <button className="btn btn-primary px-4">See All Camps</button>
       </Link>
     </div>
   );
