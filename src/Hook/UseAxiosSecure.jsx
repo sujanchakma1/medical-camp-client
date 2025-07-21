@@ -1,44 +1,67 @@
 import axios from "axios";
-import React from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import UseAxios from "./useAxios";
+import useAuth from "./useAuth";
+import Swal from "sweetalert2";
 
 const axiosSecure = axios.create({
   baseURL: "http://localhost:3000",
 });
-const useAxiosSecure = () => {
-  const { user } = UseAxios();
-  const navigate = useNavigate();
-  axiosSecure.interceptors.request.use(
-    (config) => {
-      config.headers.authorization = `Bearer ${user?.accessToken}`;
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
-    }
-  );
 
-  axiosSecure.interceptors.response.use(
-    (res) => {
-      return res;
-    },
-    (error) => {
-      console.log("inside interceptor : ", error.status);
-      const status = error.status;
-      if (status === 403) {
-        navigate("/forbidden");
-      } 
-      else if (status === 401) {
-        // logOutUser()
-        //   .then(() => {
-        //     navigate("/login");
-        //   })
-        //   .catch(() => {});
+const useAxiosSecure = () => {
+  const { user, logOutUser } = useAuth(); // assume user contains accessToken
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const requestInterceptor = axiosSecure.interceptors.request.use(
+      (config) => {
+        if (user?.accessToken) {
+          config.headers.authorization = `Bearer ${user?.accessToken}`;
+        }
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
       }
-      return Promise.reject(error)
-    }
-  );
+    );
+
+    const responseInterceptor = axiosSecure.interceptors.response.use(
+      (res) => res,
+      (error) => {
+        const status = error?.response?.status;
+        console.log("inside interceptor : ", status);
+        if (status === 403) {
+          navigate("/forbidden");
+        } else if (status === 401) {
+          logOutUser()
+            .then(() => {
+              Swal.fire({
+                title: `Log Out for ${status} Status!`,
+                icon: "success",
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((error) => {
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: error.message,
+              });
+            });
+        }
+        return Promise.reject(error);
+      }
+    );
+
+    // Cleanup interceptor when component unmounts or user changes
+    return () => {
+      axiosSecure.interceptors.request.eject(requestInterceptor);
+      axiosSecure.interceptors.response.eject(responseInterceptor);
+    };
+  }, [user, navigate]);
+
   return axiosSecure;
 };
 

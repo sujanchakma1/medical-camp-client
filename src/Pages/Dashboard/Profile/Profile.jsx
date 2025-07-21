@@ -8,14 +8,14 @@ import Loading from "../../Loading/Loading";
 // QueryClient init
 const Profile = () => {
   const { user } = useAuth();
-  const axiosInstance = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
 
   // ✅ Get user profile via query
   const { data: userProfile, isLoading } = useQuery({
     queryKey: ["userProfile", user?.email],
     queryFn: async () => {
-      const res = await axiosInstance.get(`/users?email=${user.email}`);
+      const res = await axiosSecure.get(`/users?email=${user?.email}`);
       return res.data;
     },
     enabled: !!user?.email,
@@ -23,7 +23,7 @@ const Profile = () => {
 
   const updateMutation = useMutation({
     mutationFn: async (updatedData) => {
-      const res = await axiosInstance.patch(
+      const res = await axiosSecure.patch(
         `/users?email=${user.email}`,
         updatedData
       );
