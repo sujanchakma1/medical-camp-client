@@ -38,7 +38,7 @@ const HomepageFeedback = () => {
             initial={{ opacity: 0, y: 30 }}
             transition={{ duration: 0.4, delay: idx * 0.1 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-blue-100 to-secondary border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            className="bg-gradient-to-b from-blue-100 to-secondary border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
             <div className="flex items-center gap-2 text-yellow-500 mb-2">
               {[...Array(fb.rating)].map((_, i) => (

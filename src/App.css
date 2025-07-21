@@ -9,3 +9,7 @@
   --color-secondary: #cbb1f1;
 }
 
+.active{
+  text-decoration: underline;
+}
+
