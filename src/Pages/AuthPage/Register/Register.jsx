@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import UseAxios from "../../../Hook/useAxios";
 import UseAuth from "../../../Hook/useAuth";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
 
 const Register = () => {
   const { createUser, googleLogin, updateUserProfile } = UseAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const axiosInstance = UseAxios();
+  const axiosInstance = useAxiosSecure();
   const [profilePic, setProfilePic] = useState("");
   const {
     register,

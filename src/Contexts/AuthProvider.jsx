@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.config";
+import axios from "axios";
 
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -45,7 +46,23 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       console.log("inside the user:", currentUser);
-      setLoading(false);
+      if (currentUser?.email) {
+        const userData = { email: currentUser?.email };
+        axios
+          .post("http://localhost:3000/jwt", userData)
+          .then((res) => {
+            if (res.data) {
+              localStorage.setItem("access-token", res?.data?.token);
+              setLoading(false);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
     });
 
     return () => {
@@ -64,9 +81,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext value={authInfo}>
-      {children}
-    </AuthContext>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 

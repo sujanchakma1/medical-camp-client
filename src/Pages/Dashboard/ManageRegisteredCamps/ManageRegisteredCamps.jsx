@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useMutation } from "@tanstack/react-query";
-import useAxios from "../../../Hook/useAxios";
 import Loading from "../../Loading/Loading";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
 
 const ManageRegisteredCamps = () => {
-  const axiosSecure = useAxios();
+  const axiosSecure = useAxiosSecure();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);

@@ -2,7 +2,7 @@ import React from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../Hook/useAuth";
-import useAxios from "../../../Hook/useAxios";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
 
 
 
@@ -10,7 +10,7 @@ const Login = () => {
   const {loginUser, googleLogin} = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const axiosInstance = useAxios();
+  const axiosInstance = useAxiosSecure();
 
   const {
     register,
