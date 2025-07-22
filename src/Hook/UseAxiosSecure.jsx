@@ -5,7 +5,7 @@ import useAuth from "./useAuth";
 import Swal from "sweetalert2";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://medical-camp-server-ten.vercel.app",
   withCredentials: true,
 });
 

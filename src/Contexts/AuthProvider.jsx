@@ -49,7 +49,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser?.email) {
         const userData = { email: currentUser?.email };
         axios
-          .post("http://localhost:3000/jwt", userData)
+          .post("https://medical-camp-server-ten.vercel.app/jwt", userData)
           .then((res) => {
             if (res.data) {
               localStorage.setItem("access-token", res?.data?.token);
