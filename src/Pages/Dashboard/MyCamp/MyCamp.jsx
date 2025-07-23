@@ -70,8 +70,8 @@ const MyCamp = () => {
       <h2 className="text-3xl text-center font-bold mb-5">
         My Registered Camps
       </h2>
-      <div className="overflow-x-auto">
-        <table className="table table-zebra w-full text-left">
+      <div className="">
+        <table className="table table-zebra overflow-x-auto w-full text-left">
           <thead className="bg-primary text-white">
             <tr>
               <th>Camp Name</th>

@@ -30,8 +30,8 @@ const PaymentHistory = () => {
         <title>Payment History || MedCamp</title>
       </Helmet>
       <h2 className="text-3xl text-center font-bold mb-5">Payment History</h2>
-      <div className="overflow-x-auto">
-        <table className="table table-zebra w-full text-left">
+      <div className="">
+        <table className="table table-zebra overflow-x-auto w-full text-left">
           <thead className="bg-primary text-white">
             <tr>
               <th className="px-4 py-2">Camp Name</th>

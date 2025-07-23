@@ -25,10 +25,10 @@ const DashboardLayout = () => {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-100 max-w-7xl mx-auto">
+    <div className="flex bg-gray-100 max-w-7xl mx-auto">
       {/* Sidebar */}
       <div
-        className={`bg-gradient-to-b from-blue-100 to-secondary top-0 left-0 min-h-screen w-70 shadow-md p-4 fixed lg:static z-20 transition-transform duration-300 ${
+        className={`bg-gradient-to-b from-blue-100 to-secondary top-0 left-0 min-h-full w-70 shadow-md p-4 fixed lg:static z-20 transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0`}
       >

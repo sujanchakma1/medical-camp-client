@@ -79,11 +79,11 @@ const VolunteerManagement = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="p-6">
       <Helmet>
         <title>Volunteer Management || MedCamp</title>
       </Helmet>
-      <h2 className="text-2xl font-bold mb-6 text-center">
+      <h2 className="text-3xl font-bold mb-6 text-center">
         Volunteer Management
       </h2>
 
@@ -121,8 +121,8 @@ const VolunteerManagement = () => {
         </button>
       </form>
 
-      <div className="overflow-x-auto">
-        <table className="table w-full table-zebra">
+      <div className="">
+        <table className="table w-full overflow-x-auto">
           <thead>
             <tr>
               <th>Name</th>

@@ -44,8 +44,8 @@ const Navbar = () => {
           <Logo></Logo>
         </div>
         <div className="flex gap-5 items-center">
-          <div className=" hidden lg:flex lg:*:gap-5">
-            <ul className="menu-horizontal text-sm">{links}</ul>
+          <div className="hidden md:block">
+            <ul className="menu-horizontal flex gap-3 text-sm">{links}</ul>
           </div>
           <div className=" flex gap-5 items-center">
             {user ? (
@@ -63,6 +63,11 @@ const Navbar = () => {
                 >
                   <li className="font-bold text-xl px-3">
                     {user.displayName}
+                  </li>
+                  <li className="font-semibold">
+                    <Link to="/availableCamps">
+                      Available Camps
+                    </Link>
                   </li>
                   <li className="font-semibold">
                     <Link to="/dashboard">

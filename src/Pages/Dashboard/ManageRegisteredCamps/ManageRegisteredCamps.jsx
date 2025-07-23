@@ -103,8 +103,8 @@ const ManageRegisteredCamps = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="overflow-x-auto">
-          <table className="table w-full">
+        <div className="">
+          <table className="table w-full overflow-x-auto">
             <thead className="bg-gray-100">
               <tr>
                 <th>#</th>

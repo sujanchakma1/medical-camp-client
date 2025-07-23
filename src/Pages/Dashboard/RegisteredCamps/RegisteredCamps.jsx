@@ -41,7 +41,7 @@ const RegisteredCamps = () => {
       </Helmet>
       <h2 className="text-3xl font-bold text-center mb-6">Registered Camps</h2>
       <div className="overflow-x-auto">
-        <table className="min-w-full  shadow-md rounded-md">
+        <table className="table">
           <thead className="bg-primary text-white">
             <tr>
               <th className="px-4 py-2">Camp Name</th>
@@ -57,7 +57,7 @@ const RegisteredCamps = () => {
             {camps.map((camp) => (
               <tr
                 key={camp._id}
-                className="text-center border-b border-gray-400"
+                className=" border-b border-gray-400"
               >
                 <td className="px-4 py-2">{camp.camp_name}</td>
                 <td className="px-4 py-2">৳{camp.camp_fees}</td>

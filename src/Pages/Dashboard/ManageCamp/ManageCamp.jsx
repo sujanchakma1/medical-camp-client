@@ -62,7 +62,7 @@ const ManageCamp = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="p-4 overflow-x-auto">
+    <div className="p-4">
       <Helmet>
         <title>Manage Camp || MedCamp</title>
       </Helmet>
@@ -75,7 +75,7 @@ const ManageCamp = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by camp name, date, or professional"
-          className="input input-bordered w-full max-w-md"
+          className="input input-bordered w-full"
         />
         <button onClick={handleSearch} className="btn btn-primary">
           Search
@@ -83,47 +83,49 @@ const ManageCamp = () => {
       </div>
 
       {/* Table */}
-      <table className="table table-zebra w-full">
-        <thead className="bg-gray-100">
-          <tr>
-            <th>#</th>
-            <th>Camp Name</th>
-            <th>Participant Count</th>
-            <th>Date</th>
-            <th>Location</th>
-            <th>Healthcare Professional</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {camps.map((camp, index) => (
-            <tr key={camp._id}>
-              <td>{index + 1}</td>
-              <td>{camp.camp_name}</td>
-              <td>{camp.participant_count || 0}</td>
-              <td>{camp.date_time}</td>
-              <td>{camp.location}</td>
-              <td>{camp.healthcare_professional}</td>
-              <td className="space-x-2">
-                <Link
-                  to={`/dashboard/update-camp/${camp._id}`}
-                  className="btn btn-sm btn-warning flex items-center gap-1"
-                >
-                  <FaEdit />
-                  Update
-                </Link>
-                <button
-                  onClick={() => handleDelete(camp._id)}
-                  className="btn btn-sm btn-error flex items-center gap-1"
-                >
-                  <FaTrashAlt />
-                  Delete
-                </button>
-              </td>
+      <div className="overflow-x-auto">
+        <table className="table">
+          <thead className="bg-gray-100">
+            <tr>
+              <th>#</th>
+              <th>Camp Name</th>
+              <th>Participant Count</th>
+              <th>Date</th>
+              <th>Location</th>
+              <th>Healthcare Professional</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {camps.map((camp, index) => (
+              <tr key={camp._id}>
+                <td>{index + 1}</td>
+                <td>{camp.camp_name}</td>
+                <td>{camp.participant_count || 0}</td>
+                <td>{camp.date_time}</td>
+                <td>{camp.location}</td>
+                <td>{camp.healthcare_professional}</td>
+                <td className="space-x-2">
+                  <Link
+                    to={`/dashboard/update-camp/${camp._id}`}
+                    className="btn btn-sm btn-warning flex items-center gap-1"
+                  >
+                    <FaEdit />
+                    Update
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(camp._id)}
+                    className="btn btn-sm btn-error flex items-center gap-1"
+                  >
+                    <FaTrashAlt />
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const Logo = () => {
     <Link to="/">
       <div className="flex items-center gap-2">
         <img src={logo} alt="" className="w-10" />
-        <h2 className="text-2xl font-bold text-primary"> MedCamp</h2>
+        <h2 className="md:text-2xl text-md font-bold text-primary"> MedCamp</h2>
       </div>
     </Link>
   );
