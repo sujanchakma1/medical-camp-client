@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Users, CalendarCheck, DollarSign } from "lucide-react";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Loading from "../../Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const AdminHome = () => {
   const axiosSecure = useAxiosSecure();
@@ -22,12 +23,15 @@ const AdminHome = () => {
     totalPayments = 0,
     recentParticipants = [],
   } = stats;
-  if(isLoading){
-    return <Loading></Loading>
+  if (isLoading) {
+    return <Loading></Loading>;
   }
 
   return (
     <div className="p-5">
+      <Helmet>
+        <title>Admin Dashboard || MedCamp</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-2">Welcome, Admin</h1>
       <p className="text-gray-600 mb-6">Here is your dashboard overview.</p>
 
@@ -77,7 +81,9 @@ const AdminHome = () => {
                   <td className="px-4 py-2 border">{p.participant_name}</td>
                   <td className="px-4 py-2 border">{p.participant_email}</td>
                   <td className="px-4 py-2 border">{p.camp_name}</td>
-                  <td className="px-4 py-2 border">{p.joined_at?.slice(0, 10)}</td>
+                  <td className="px-4 py-2 border">
+                    {p.joined_at?.slice(0, 10)}
+                  </td>
                 </tr>
               ))}
               {recentParticipants.length === 0 && (

@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import useAuth from "../../Hook/useAuth";
 import Loading from "../Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const CampDetails = () => {
   const { id } = useParams();
@@ -67,6 +68,9 @@ const CampDetails = () => {
 
   return (
     <div className="py-10 px-4 max-w-6xl mx-auto">
+      <Helmet>
+        <title>Camp Details || MedCamp</title>
+      </Helmet>
       <div className="bg-gradient-to-b from-secondary to-blue-100 shadow-lg rounded-2xl overflow-hidden">
         <img
           src={camp.image}

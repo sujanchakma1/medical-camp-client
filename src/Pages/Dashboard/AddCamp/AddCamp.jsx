@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const AddCamp = () => {
   const axiosSecure = useAxiosSecure();
@@ -36,6 +37,11 @@ const AddCamp = () => {
 
   return (
     <div className=" bg-base-200 p-8 rounded-lg shadow">
+      <Helmet>
+        <title>
+          Add Camp || MedCamp
+        </title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-6 text-center">Add A Camp</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>

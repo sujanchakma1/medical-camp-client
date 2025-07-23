@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import UseAuth from "../../../Hook/useAuth";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUser, googleLogin, updateUserProfile } = UseAuth();
@@ -89,6 +90,9 @@ const Register = () => {
   };
   return (
     <div className="flex justify-center py-14">
+      <Helmet>
+        <title>Register || MedCamp</title>
+      </Helmet>
       <div className="card w-full max-w-md min-h-screen">
         <div className="space-y-2 px-5">
           <h1 className="font-extrabold text-5xl">Welcome Back</h1>

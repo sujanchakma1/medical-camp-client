@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import Loading from "../../Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 // QueryClient init
 const Profile = () => {
@@ -61,6 +62,11 @@ const Profile = () => {
 
   return (
     <div className=" p-6 mt-6">
+      <Helmet>
+              <title>
+                Profile || MedCamp
+              </title>
+            </Helmet>
       <div className="items-center gap-6">
         <img
           src={userProfile?.photoURL}

@@ -12,6 +12,7 @@ import {
 import useAuth from "../../../Hook/useAuth";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Loading from "../../Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const Analytics = () => {
   const { user } = useAuth();
@@ -41,6 +42,9 @@ const Analytics = () => {
 
   return (
     <div className="p-5">
+      <Helmet>
+        <title>Analytics || MedCamp</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-5 text-center">
         Camp Fee Analytics
       </h2>

@@ -3,12 +3,13 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hook/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const FeedbackForm = ({ campId, participantId, onSubmitted }) => {
   const { register, handleSubmit, reset } = useForm();
   const axiosSecure = useAxiosSecure();
   const [submitting, setSubmitting] = useState(false);
-  const {user} = useAuth()
+  const { user } = useAuth();
 
   const onSubmit = async (data) => {
     setSubmitting(true);
@@ -17,7 +18,7 @@ const FeedbackForm = ({ campId, participantId, onSubmitted }) => {
         camp_id: campId,
         participant_id: participantId,
         rating: parseInt(data.rating),
-        participant_name : user?.displayName,
+        participant_name: user?.displayName,
         feedback: data.feedback,
         date: new Date(),
       };
@@ -38,6 +39,9 @@ const FeedbackForm = ({ campId, participantId, onSubmitted }) => {
 
   return (
     <div className="p-5">
+      <Helmet>
+        <title>Feedback || MedCamp</title>
+      </Helmet>
       <h2 className="text-3xl text-center font-bold mb-4">Submit Feedback</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>

@@ -3,11 +3,10 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../Hook/useAuth";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
-
-
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
-  const {loginUser, googleLogin} = useAuth();
+  const { loginUser, googleLogin } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const axiosInstance = useAxiosSecure();
@@ -52,6 +51,9 @@ const Login = () => {
   };
   return (
     <div className="flex justify-center py-14 ">
+      <Helmet>
+        <title>Login || MedCamp</title>
+      </Helmet>
       <div className="card w-full max-w-md min-h-screen">
         <div className="space-y-2 px-5">
           <h1 className="font-extrabold text-3xl">Welcome Back</h1>
@@ -128,7 +130,6 @@ const Login = () => {
               </svg>
               Login with Google
             </button>
-            
           </fieldset>
         </form>
       </div>

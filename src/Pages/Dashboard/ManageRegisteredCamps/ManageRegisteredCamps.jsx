@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { useMutation } from "@tanstack/react-query";
 import Loading from "../../Loading/Loading";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const ManageRegisteredCamps = () => {
   const axiosSecure = useAxiosSecure();
@@ -15,7 +16,9 @@ const ManageRegisteredCamps = () => {
   const fetchCamps = async (campName = "") => {
     setLoading(true);
     try {
-      const res = await axiosSecure.get(`/registered-camps${campName ? `?camp_name=${campName}` : ""}`);
+      const res = await axiosSecure.get(
+        `/registered-camps${campName ? `?camp_name=${campName}` : ""}`
+      );
       setRegisteredCamps(res.data);
     } catch (err) {
       console.error("Failed to fetch registered camps:", err);
@@ -77,7 +80,12 @@ const ManageRegisteredCamps = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-3xl text-center font-bold mb-6">Manage Registered Camps</h2>
+      <Helmet>
+        <title>Manage Registered || MedCamp</title>
+      </Helmet>
+      <h2 className="text-3xl text-center font-bold mb-6">
+        Manage Registered Camps
+      </h2>
 
       <div className="flex gap-2 mb-4 max-w-md">
         <input
@@ -87,7 +95,9 @@ const ManageRegisteredCamps = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="input input-bordered w-full"
         />
-        <button onClick={handleSearch} className="btn btn-primary">Search</button>
+        <button onClick={handleSearch} className="btn btn-primary">
+          Search
+        </button>
       </div>
 
       {loading ? (

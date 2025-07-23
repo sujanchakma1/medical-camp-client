@@ -3,6 +3,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hook/useAuth";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const UserHome = () => {
   const { user } = useAuth();
@@ -17,14 +18,17 @@ const UserHome = () => {
     enabled: !!user?.email,
   });
 
-  const {
-    totalRegisteredCamps = 0,
-    confirmedCamps = 0,
-  } = stats;
+  const { totalRegisteredCamps = 0, confirmedCamps = 0 } = stats;
 
   return (
     <div className="p-5">
-      <h1 className="text-3xl font-bold">Welcome, {user?.displayName || "User"}</h1>
+      <Helmet>
+        <title>Participant Dashboard || MedCamp</title>
+      </Helmet>
+
+      <h1 className="text-3xl font-bold">
+        Welcome, {user?.displayName || "User"}
+      </h1>
       <p className="text-gray-600">Here's your activity summary:</p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">

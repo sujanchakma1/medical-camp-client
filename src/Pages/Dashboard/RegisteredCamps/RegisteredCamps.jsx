@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import useAuth from "../../../Hook/useAuth";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const RegisteredCamps = () => {
   const { user } = useAuth();
@@ -35,6 +36,9 @@ const RegisteredCamps = () => {
 
   return (
     <div className="p-5">
+      <Helmet>
+        <title>Registered Camp || MedCamp</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center mb-6">Registered Camps</h2>
       <div className="overflow-x-auto">
         <table className="min-w-full  shadow-md rounded-md">
@@ -51,7 +55,10 @@ const RegisteredCamps = () => {
           </thead>
           <tbody>
             {camps.map((camp) => (
-              <tr key={camp._id} className="text-center border-b border-gray-400">
+              <tr
+                key={camp._id}
+                className="text-center border-b border-gray-400"
+              >
                 <td className="px-4 py-2">{camp.camp_name}</td>
                 <td className="px-4 py-2">৳{camp.camp_fees}</td>
                 <td className="px-4 py-2">{camp.participant_name}</td>
@@ -62,15 +69,21 @@ const RegisteredCamps = () => {
                     </span>
                   ) : (
                     <Link to={`/dashboard/payment/${camp._id}`}>
-                      <button className="bg-blue-500 text-white px-3 py-1 rounded">Pay</button>
+                      <button className="bg-blue-500 text-white px-3 py-1 rounded">
+                        Pay
+                      </button>
                     </Link>
                   )}
                 </td>
                 <td className="px-4 py-2">
                   {camp.confirmation_status === "Confirmed" ? (
-                    <span className="text-green-600 font-semibold">Confirmed</span>
+                    <span className="text-green-600 font-semibold">
+                      Confirmed
+                    </span>
                   ) : (
-                    <span className="text-yellow-600 font-semibold">Pending</span>
+                    <span className="text-yellow-600 font-semibold">
+                      Pending
+                    </span>
                   )}
                 </td>
                 <td className="px-4 py-2">
@@ -86,7 +99,12 @@ const RegisteredCamps = () => {
                 </td>
                 <td className="px-4 py-2">
                   {camp.payment_status === "Paid" ? (
-                    <button disabled className="text-gray-400 cursor-not-allowed">Cancel</button>
+                    <button
+                      disabled
+                      className="text-gray-400 cursor-not-allowed"
+                    >
+                      Cancel
+                    </button>
                   ) : (
                     <button
                       onClick={() => handleCancel(camp._id)}

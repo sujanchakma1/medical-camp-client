@@ -9,6 +9,7 @@ import {
   FaHome,
   FaPlusCircle,
   FaUserCircle,
+  FaUsers,
 } from "react-icons/fa";
 import Logo from "../../Shared/Logo/Logo";
 import useUserRole from "../../Hook/useUserRole";
@@ -17,9 +18,9 @@ import Loading from "../../Pages/Loading/Loading";
 const DashboardLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleSidebar = () => setIsOpen(!isOpen);
-  const {role, isRoleLoading} = useUserRole()
-  if(isRoleLoading){
-    return <Loading></Loading>
+  const { role, isRoleLoading } = useUserRole();
+  if (isRoleLoading) {
+    return <Loading></Loading>;
   }
 
   return (
@@ -74,6 +75,14 @@ const DashboardLayout = () => {
               >
                 <FaClipboardList />
                 <span>Manage Registered Camp</span>
+              </Link>
+
+              <Link
+                to="/dashboard/volunteers"
+                className="flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 hover:bg-gray-200 text-gray-700"
+              >
+                <FaUsers />
+                <span>Volunteers</span>
               </Link>
             </>
           )}

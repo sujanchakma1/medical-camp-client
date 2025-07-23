@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Loading from "../../Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const ManageCamp = () => {
   const axiosSecure = useAxiosSecure();
@@ -15,7 +16,9 @@ const ManageCamp = () => {
   const fetchCamps = async (searchValue = "") => {
     setLoading(true);
     try {
-      const res = await axiosSecure.get(`/camps${searchValue ? `?search=${searchValue}` : ""}`);
+      const res = await axiosSecure.get(
+        `/camps${searchValue ? `?search=${searchValue}` : ""}`
+      );
       setCamps(res.data);
     } catch (err) {
       console.error("Error fetching camps:", err);
@@ -43,12 +46,15 @@ const ManageCamp = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/delete-camp/${id}`).then(() => {
-          Swal.fire("Deleted!", "Camp deleted successfully.", "success");
-          fetchCamps(search); // reload after delete
-        }).catch(() => {
-          Swal.fire("Error", "Failed to delete the camp.", "error");
-        });
+        axiosSecure
+          .delete(`/delete-camp/${id}`)
+          .then(() => {
+            Swal.fire("Deleted!", "Camp deleted successfully.", "success");
+            fetchCamps(search); // reload after delete
+          })
+          .catch(() => {
+            Swal.fire("Error", "Failed to delete the camp.", "error");
+          });
       }
     });
   };
@@ -57,6 +63,9 @@ const ManageCamp = () => {
 
   return (
     <div className="p-4 overflow-x-auto">
+      <Helmet>
+        <title>Manage Camp || MedCamp</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-4 text-center">Manage Camps</h2>
 
       {/* Search input with button */}

@@ -23,6 +23,7 @@ import ParticipantRoute from "../Routes/ParticipantRoute";
 import Forbidden from "../Pages/ForbiddenPage/Forbidden";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
+import VolunteerManagement from "../Pages/Dashboard/VolunteerManagement/VolunteerManagement";
 
 const router = createBrowserRouter([
   {
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
             <ManageRegisteredCamps></ManageRegisteredCamps>
           </AdminRoute>
         ),
+      },
+      {
+        path: "volunteers",
+        element: <AdminRoute><VolunteerManagement></VolunteerManagement></AdminRoute>
       },
 
       // Participant

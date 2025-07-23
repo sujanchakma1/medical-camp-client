@@ -4,10 +4,13 @@ import { FaTrash, FaMoneyCheckAlt } from "react-icons/fa";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import useAuth from "../../../Hook/useAuth";
 import Loading from "../../Loading/Loading";
+import { useNavigate } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const MyCamp = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   // ✅ Get participant data by email
   const {
@@ -56,11 +59,14 @@ const MyCamp = () => {
   // ✅ Pay handler (redirect to stripe or another route)
   const handlePay = (camp) => {
     // Navigate to payment page (pass camp info or ID)
-    window.location.href = `/dashboard/payment/${camp._id}`;
+    navigate(`/dashboard/payment/${camp._id}`);
   };
 
   return (
     <div className="p-4">
+      <Helmet>
+        <title>My Camp || MedCamp</title>
+      </Helmet>
       <h2 className="text-3xl text-center font-bold mb-5">
         My Registered Camps
       </h2>

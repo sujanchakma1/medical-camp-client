@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Loading from "../../Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const UpdateCamp = () => {
   const { id } = useParams();
@@ -68,6 +69,9 @@ const UpdateCamp = () => {
 
   return (
     <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow">
+      <Helmet>
+        <title>Update Camp || MedCamp</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-6 text-center">Update Camp</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
