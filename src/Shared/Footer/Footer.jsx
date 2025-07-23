@@ -32,7 +32,7 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
           <div className="flex gap-4 mt-2">
-            <a href="#" className="text-blue-600 hover:text-blue-800"><FaFacebookSquare size={24}/></a>
+            <a href="https://www.facebook.com/share/1LL4u1yggP/" className="text-blue-600 hover:text-blue-800"><FaFacebookSquare size={24}/></a>
             <a href="https://github.com/sujanchakma1" className="hover:text-black"><FaGithub size={24}/></a>
             <a href="www.linkedin.com/in/sujan99" className="text-blue-700 hover:text-blue-900"><FaLinkedin size={24}/></a>
           </div>
