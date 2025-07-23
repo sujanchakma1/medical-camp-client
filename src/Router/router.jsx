@@ -24,6 +24,7 @@ import Forbidden from "../Pages/ForbiddenPage/Forbidden";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 import VolunteerManagement from "../Pages/Dashboard/VolunteerManagement/VolunteerManagement";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -104,7 +105,11 @@ const router = createBrowserRouter([
       },
       {
         path: "volunteers",
-        element: <AdminRoute><VolunteerManagement></VolunteerManagement></AdminRoute>
+        element: (
+          <AdminRoute>
+            <VolunteerManagement></VolunteerManagement>
+          </AdminRoute>
+        ),
       },
 
       // Participant
@@ -143,6 +148,14 @@ const router = createBrowserRouter([
       {
         path: "feedback/:id",
         element: <FeedbackForm></FeedbackForm>,
+      },
+      {
+        path: "payment-history",
+        element: (
+          <ParticipantRoute>
+            <PaymentHistory></PaymentHistory>
+          </ParticipantRoute>
+        ),
       },
     ],
   },
