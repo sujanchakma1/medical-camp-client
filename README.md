@@ -8,7 +8,7 @@ A full-stack MERN (MongoDB, Express, React, Node.js) web application that helps 
 
 ## 👤 Organizer Login Info
 
-- **Username / Email:** sujanckz926@gmail.com.com  
+- **Username / Email:** sujanckz926@gmail.com  
 - **Password:** organizer1
 
 > ✅ You can use this account to access the Organizer Dashboard and test all features.
