@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { Link } from "react-router";
 import Loading from "../../Loading/Loading";
+import { TbDetails } from "react-icons/tb";
+import { FaCircleRight } from "react-icons/fa6";
+import Aos from "aos";
 
 const PopularCamp = () => {
   const axiosSecure = useAxiosSecure();
+  useEffect(() => {
+    Aos.init({ duration: 2000, once: false });
+  }, []);
 
   const {
     data: camps = [],
@@ -26,7 +32,11 @@ const PopularCamp = () => {
     );
 
   return (
-    <div className="py-10 px-4 max-w-6xl mx-auto">
+    <div
+      data-aos="fade-up"
+      data-aos-anchor-placement="top-bottom"
+      className="py-10 px-4 max-w-6xl mx-auto"
+    >
       <h2 className="text-3xl font-bold text-center mb-8">
         Popular Medical Camps
       </h2>
@@ -34,14 +44,14 @@ const PopularCamp = () => {
         {camps.map((camp, index) => (
           <div
             key={index}
-            className="bg-gradient-to-b from-secondary to-blue-100 border border-gray-200 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            className="bg-gradient-to-b from-gray-50 to-gray-200 rounded-2xl shadow-md flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
             <img
               src={camp.image}
               alt={camp.camp_name}
-              className="w-full h-52 object-cover rounded-t-xl"
+              className="w-full h-52 object-cover"
             />
-            <div className="p-5 space-y-2">
+            <div className="p-5 flex flex-col gap-2 flex-grow">
               <h3 className="text-xl font-bold">{camp.camp_name}</h3>
               <p className="text-sm text-gray-600">Fees: ৳{camp.camp_fees}</p>
               <p className="text-sm text-gray-600">{camp.date_time}</p>
@@ -52,9 +62,13 @@ const PopularCamp = () => {
               <p className="text-sm text-gray-700 font-medium">
                 Participants: {camp.participant_count}
               </p>
+
               <div className="mt-auto flex justify-end pt-4">
                 <Link to={`/camp-details/${camp._id}`}>
-                  <button className="btn btn-sm btn-primary ">Details</button>
+                  <button className="btn btn-sm btn-primary items-center">
+                    <TbDetails />
+                    Details
+                  </button>
                 </Link>
               </div>
             </div>
@@ -62,7 +76,10 @@ const PopularCamp = () => {
         ))}
       </div>
       <Link className="flex justify-center py-10" to="/availableCamps">
-        <button className="btn btn-primary px-4">See All Camps</button>
+        <button className="btn btn-primary px-4 items-center">
+          <FaCircleRight />
+          See All Camps
+        </button>
       </Link>
     </div>
   );

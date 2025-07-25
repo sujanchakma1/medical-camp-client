@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Loading from "../Loading/Loading";
 import { Helmet } from "react-helmet-async";
+import { TbDetails } from "react-icons/tb";
+import Aos from "aos";
 
 const AvailableCamp = () => {
   const axiosInstance = useAxiosSecure();
+  useEffect(() => {
+    Aos.init({ duration: 2000, once: false });
+  }, []);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("default");
@@ -52,7 +57,11 @@ const AvailableCamp = () => {
   });
 
   return (
-    <div className="py-10 px-4 max-w-6xl mx-auto">
+    <div
+      data-aos="fade-up"
+      data-aos-anchor-placement="top-bottom"
+      className="py-10 px-4 max-w-6xl mx-auto"
+    >
       <Helmet>
         <title>Available Camp || MedCamp</title>
       </Helmet>
@@ -103,7 +112,7 @@ const AvailableCamp = () => {
         {sortedCamps.map((camp) => (
           <div
             key={camp._id}
-            className="bg-gradient-to-b from-secondary to-blue-100 rounded-2xl shadow-md flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            className="bg-gradient-to-b from-gray-50 to-gray-200 rounded-2xl shadow-md flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
             <img
               src={camp.image}
@@ -124,7 +133,10 @@ const AvailableCamp = () => {
 
               <div className="mt-auto flex justify-end pt-4">
                 <Link to={`/camp-details/${camp._id}`}>
-                  <button className="btn btn-sm btn-primary ">Details</button>
+                  <button className="btn btn-sm btn-primary items-center">
+                    <TbDetails />
+                    Details
+                  </button>
                 </Link>
               </div>
             </div>

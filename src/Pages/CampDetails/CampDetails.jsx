@@ -71,7 +71,7 @@ const CampDetails = () => {
       <Helmet>
         <title>Camp Details || MedCamp</title>
       </Helmet>
-      <div className="bg-gradient-to-b from-secondary to-blue-100 shadow-lg rounded-2xl overflow-hidden">
+      <div className="bg-gradient-to-b from-gray-50 to-gray-200 shadow-lg rounded-2xl overflow-hidden">
         <img
           src={camp.image}
           alt={camp.camp_name}

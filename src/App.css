@@ -3,13 +3,13 @@
 @plugin "daisyui";
 
 @plugin "daisyui/theme" {
-  name: "light";
   default: true;
   --color-primary: #3B82F6;
-  --color-secondary: #cbb1f1;
+  --color-secondary: #88CBF2;
 }
 
 .active{
   text-decoration: underline;
+  @apply text-primary
 }
 

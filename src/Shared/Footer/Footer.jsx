@@ -4,7 +4,7 @@ import Logo from "../Logo/Logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-blue-100 to-secondary text-gray-800 py-10">
+    <footer className="bg-secondary text-gray-800 py-10">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo + Slogan */}
         <div>
@@ -24,8 +24,8 @@ const Footer = () => {
         {/* Contact Info */}
         <div>
           <h3 className="text-lg font-semibold mb-2">Contact</h3>
-          <p className="flex items-center gap-2 text-sm"><FaPhone /> +8801XXXXXXXXX</p>
-          <p className="flex items-center gap-2 text-sm"><FaEnvelope /> info@medcamp.com</p>
+          <p className="flex items-center gap-2 text-sm"><FaPhone /> +8801571312226</p>
+          <p className="flex items-center gap-2 text-sm"><FaEnvelope /> sujanckz926@gmail.com</p>
         </div>
 
         {/* Social */}
