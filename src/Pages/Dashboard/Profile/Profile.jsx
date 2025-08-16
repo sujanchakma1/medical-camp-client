@@ -81,7 +81,7 @@ const Profile = () => {
           </p>
           <button
             onClick={() => document.getElementById("my_modal_3").showModal()}
-            className="btn btn-primary mt-3"
+            className="btn rounded-full btn-primary mt-3"
           >
             Update Profile
           </button>
@@ -92,7 +92,7 @@ const Profile = () => {
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
           <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            <button className="btn  btn-sm  btn-circle rounded-2xl btn-ghost absolute right-2 top-2">
               ✕
             </button>
           </form>
@@ -138,7 +138,7 @@ const Profile = () => {
                   required
                 />
               </div>
-              <button className="btn btn-primary w-full">Save Changes</button>
+              <button className="btn rounded-full btn-primary w-full">Save Changes</button>
             </fieldset>
           </form>
         </div>

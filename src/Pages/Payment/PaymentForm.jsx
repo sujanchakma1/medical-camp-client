@@ -97,7 +97,7 @@ const PaymentForm = () => {
         <CardElement className="p-2 border rounded "></CardElement>
         <button
           type="submit"
-          className="btn btn-primary w-full text-black"
+          className="btn rounded-full btn-primary w-full text-black"
           disabled={!stripe}
         >
           Pay ৳{amount}

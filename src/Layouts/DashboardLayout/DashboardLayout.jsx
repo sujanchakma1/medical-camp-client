@@ -59,7 +59,7 @@ const DashboardLayout = () => {
                 className="flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 hover:bg-gray-200 text-gray-700"
               >
                 <FaPlusCircle />
-                <span>Add a Camp</span>
+                <span>Add Camp</span>
               </Link>
 
               <Link

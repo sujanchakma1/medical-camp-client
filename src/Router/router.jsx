@@ -25,6 +25,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 import VolunteerManagement from "../Pages/Dashboard/VolunteerManagement/VolunteerManagement";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import Blog from "../Pages/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "availableCamps",
         Component: AvailableCamp,
+      },
+      {
+        path: "blog",
+        Component: Blog,
       },
       {
         path: "camp-details/:id",

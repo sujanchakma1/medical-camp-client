@@ -95,7 +95,7 @@ const ManageRegisteredCamps = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="input input-bordered w-full"
         />
-        <button onClick={handleSearch} className="btn btn-primary">
+        <button onClick={handleSearch} className="btn rounded-full btn-primary">
           Search
         </button>
       </div>
@@ -142,7 +142,7 @@ const ManageRegisteredCamps = () => {
                     ) : (
                       <button
                         onClick={() => handleConfirm(camp._id)}
-                        className="btn btn-sm btn-primary"
+                        className="btn  btn-sm rounded-2xl btn-primary"
                       >
                         Pending
                       </button>
@@ -152,14 +152,14 @@ const ManageRegisteredCamps = () => {
                     {camp.payment_status === "Paid" ? (
                       <button
                         disabled
-                        className="btn btn-sm btn-error cursor-not-allowed"
+                        className="btn  btn-sm rounded-2xl btn-error cursor-not-allowed"
                       >
                         Cancel
                       </button>
                     ) : (
                       <button
                         onClick={() => handleCancel(camp._id)}
-                        className="btn btn-sm btn-error"
+                        className="btn  btn-sm rounded-2xl btn-error"
                       >
                         Cancel
                       </button>

@@ -116,7 +116,7 @@ const VolunteerManagement = () => {
           onChange={(e) => setAvailability(e.target.value)}
           className="input input-bordered w-full"
         />
-        <button type="submit" className="btn btn-primary w-full">
+        <button type="submit" className="btn rounded-full btn-primary w-full">
           Add Volunteer
         </button>
       </form>
@@ -149,7 +149,7 @@ const VolunteerManagement = () => {
                   <td>
                     <button
                       onClick={() => handleDelete(v._id)}
-                      className="btn btn-error btn-sm"
+                      className="btn  btn-error rounded-2xl btn-sm"
                     >
                       Delete
                     </button>

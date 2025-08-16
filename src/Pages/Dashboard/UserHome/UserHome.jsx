@@ -2,8 +2,8 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hook/useAuth";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../Hook/UseAxiosSecure";
 
 const UserHome = () => {
   const { user } = useAuth();

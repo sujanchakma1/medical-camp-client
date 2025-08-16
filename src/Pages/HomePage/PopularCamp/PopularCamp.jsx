@@ -65,7 +65,7 @@ const PopularCamp = () => {
 
               <div className="mt-auto flex justify-end pt-4">
                 <Link to={`/camp-details/${camp._id}`}>
-                  <button className="btn btn-sm btn-primary items-center">
+                  <button className="btn btn-sm rounded-2xl btn-primary items-center">
                     <TbDetails />
                     Details
                   </button>
@@ -76,7 +76,7 @@ const PopularCamp = () => {
         ))}
       </div>
       <Link className="flex justify-center py-10" to="/availableCamps">
-        <button className="btn btn-primary px-4 items-center">
+        <button className="btn rounded-full btn-primary items-center">
           <FaCircleRight />
           See All Camps
         </button>

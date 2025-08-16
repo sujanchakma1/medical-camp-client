@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Loading from "../../Loading/Loading";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../Hook/UseAxiosSecure";
 
 const ManageCamp = () => {
   const axiosSecure = useAxiosSecure();
@@ -77,7 +77,7 @@ const ManageCamp = () => {
           placeholder="Search by camp name, date, or professional"
           className="input input-bordered w-full"
         />
-        <button onClick={handleSearch} className="btn btn-primary">
+        <button onClick={handleSearch} className="btn rounded-full btn-primary">
           Search
         </button>
       </div>
@@ -108,14 +108,14 @@ const ManageCamp = () => {
                 <td className="space-x-2">
                   <Link
                     to={`/dashboard/update-camp/${camp._id}`}
-                    className="btn btn-sm btn-warning flex items-center gap-1"
+                    className="btn btn-sm rounded-2xl btn-warning flex items-center gap-1"
                   >
                     <FaEdit />
                     Update
                   </Link>
                   <button
                     onClick={() => handleDelete(camp._id)}
-                    className="btn btn-sm btn-error flex items-center gap-1"
+                    className="btn btn-sm rounded-2xl btn-error flex items-center gap-1"
                   >
                     <FaTrashAlt />
                     Delete

@@ -146,7 +146,7 @@ const Register = () => {
                 Password is more than 6 character or longer
               </p>
             )}
-            <button className="btn btn-primary mt-4 text-black">Sign Up</button>
+            <button className="btn rounded-full btn-primary mt-4 text-black">Sign Up</button>
             <p className="text-md">
               Already have an account?{" "}
               <Link to="/login" className="text-primary">

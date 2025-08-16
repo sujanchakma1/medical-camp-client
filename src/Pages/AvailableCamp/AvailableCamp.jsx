@@ -95,7 +95,7 @@ const AvailableCamp = () => {
         {/* Layout Toggle */}
         <button
           onClick={() => setIsTwoColumn(!isTwoColumn)}
-          className="btn btn-outline w-full lg:w-40"
+          className="btn rounded-full btn-outline w-full lg:w-40"
         >
           {isTwoColumn ? "3-Column View" : "2-Column View"}
         </button>
@@ -133,7 +133,7 @@ const AvailableCamp = () => {
 
               <div className="mt-auto flex justify-end pt-4">
                 <Link to={`/camp-details/${camp._id}`}>
-                  <button className="btn btn-sm btn-primary items-center">
+                  <button className="btn btn-sm rounded-2xl btn-primary items-center">
                     <TbDetails />
                     Details
                   </button>

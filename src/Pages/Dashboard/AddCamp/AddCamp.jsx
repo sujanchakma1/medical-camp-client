@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../Hook/UseAxiosSecure";
 
 const AddCamp = () => {
   const axiosSecure = useAxiosSecure();
@@ -116,7 +116,7 @@ const AddCamp = () => {
           {errors.description && <p className="text-red-500">Description required</p>}
         </div>
 
-        <button type="submit" className="btn btn-primary w-full">
+        <button type="submit" className="btn rounded-full btn-primary w-full">
           Submit Camp
         </button>
       </form>

@@ -1,9 +1,9 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Loading from "../../Loading/Loading";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../Hook/UseAxiosSecure";
 
 const UpdateCamp = () => {
   const { id } = useParams();
@@ -165,7 +165,7 @@ const UpdateCamp = () => {
         <button
           type="submit"
           disabled={updateMutation.isLoading}
-          className="btn btn-primary w-full mt-4"
+          className="btn rounded-full btn-primary w-full mt-4"
         >
           {updateMutation.isLoading ? "Updating..." : "Update Camp"}
         </button>

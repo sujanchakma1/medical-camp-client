@@ -101,7 +101,7 @@ const CampDetails = () => {
 
           <button
             onClick={() => modalRef.current && modalRef.current.showModal()}
-            className="btn btn-primary mt-4"
+            className="btn rounded-full btn-primary mt-4"
           >
             Join Camp
           </button>
@@ -111,7 +111,7 @@ const CampDetails = () => {
       <dialog id="my_modal_3" className="modal" ref={modalRef}>
         <div className="modal-box">
           <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            <button className="btn btn-sm btn-circle rounded-2xl btn-ghost absolute right-2 top-2">
               ✕
             </button>
           </form>
@@ -189,7 +189,7 @@ const CampDetails = () => {
               className="input input-bordered w-full"
             />
             <div className="text-right">
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn rounded-full btn-primary">
                 Submit
               </button>
             </div>
