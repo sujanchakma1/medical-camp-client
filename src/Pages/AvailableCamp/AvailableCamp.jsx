@@ -112,7 +112,7 @@ const AvailableCamp = () => {
         {sortedCamps.map((camp) => (
           <div
             key={camp._id}
-            className="bg-gradient-to-b from-gray-50 to-gray-200 rounded-2xl shadow-md flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            className="bg-gradient-to-b from-gray-50 to-gray-200 border border-gray-200 rounded-2xl shadow-md flex flex-col overflow-hidden hover:shadow-xl hover:scale-102 transition-all"
           >
             <img
               src={camp.image}
