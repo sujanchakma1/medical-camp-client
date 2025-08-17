@@ -22,10 +22,10 @@ import AdminRoute from "../Routes/AdminRoute";
 import ParticipantRoute from "../Routes/ParticipantRoute";
 import Forbidden from "../Pages/ForbiddenPage/Forbidden";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
-import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 import VolunteerManagement from "../Pages/Dashboard/VolunteerManagement/VolunteerManagement";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import Blog from "../Pages/Blog/Blog";
+import Overview from "../Pages/Dashboard/DashboardOverview/Overview";
 
 const router = createBrowserRouter([
   {
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: DashboardHome,
+        Component: Overview,
       },
       {
         path: "profile",
