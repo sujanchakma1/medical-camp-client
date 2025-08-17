@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdPending } from "react-icons/md";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import useAuth from "../../../Hook/useAuth";
 import Loading from "../../Loading/Loading";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../Hook/UseAxiosSecure";
 
 const PaymentHistory = () => {
   const axiosSecure = useAxiosSecure();

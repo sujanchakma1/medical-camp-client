@@ -75,7 +75,7 @@ const ManageCamp = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by camp name, date, or professional"
-          className="input input-bordered w-full"
+          className="input input-bordered w-1/2 rounded-2xl"
         />
         <button onClick={handleSearch} className="btn rounded-full btn-primary">
           Search
@@ -85,14 +85,12 @@ const ManageCamp = () => {
       {/* Table */}
       <div className="overflow-x-auto">
         <table className="table">
-          <thead className="bg-gray-100">
+          <thead className="">
             <tr>
               <th>#</th>
               <th>Camp Name</th>
               <th>Participant Count</th>
-              <th>Date</th>
               <th>Location</th>
-              <th>Healthcare Professional</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -102,23 +100,19 @@ const ManageCamp = () => {
                 <td>{index + 1}</td>
                 <td>{camp.camp_name}</td>
                 <td>{camp.participant_count || 0}</td>
-                <td>{camp.date_time}</td>
                 <td>{camp.location}</td>
-                <td>{camp.healthcare_professional}</td>
-                <td className="space-x-2">
+                <td className="flex gap-2">
                   <Link
                     to={`/dashboard/update-camp/${camp._id}`}
-                    className="btn btn-sm rounded-2xl btn-warning flex items-center gap-1"
+                    className="btn btn-sm"
                   >
-                    <FaEdit />
-                    Update
+                    <FaEdit size={14} />
                   </Link>
                   <button
                     onClick={() => handleDelete(camp._id)}
-                    className="btn btn-sm rounded-2xl btn-error flex items-center gap-1"
+                    className="btn btn-sm"
                   >
-                    <FaTrashAlt />
-                    Delete
+                    <FaTrashAlt size={14}/>
                   </button>
                 </td>
               </tr>

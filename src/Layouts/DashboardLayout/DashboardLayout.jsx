@@ -25,7 +25,7 @@ const DashboardLayout = () => {
   }
 
   return (
-    <div className="flex bg-gray-100 min-h-screen max-w-7xl mx-auto">
+    <div className="flex  min-h-screen max-w-7xl mx-auto">
       {/* Sidebar */}
       <div
         className={`bg-secondary top-0 left-0 min-h-full w-70 shadow-md p-4 fixed lg:static z-20 transition-transform duration-300 ${
@@ -141,7 +141,7 @@ const DashboardLayout = () => {
       )}
 
       {/* Main Content */}
-      <div className="flex-1">
+      <div className="flex-1 max-w-6xl mx-auto">
         {/* Topbar Toggle Button for small screens */}
         <div className="lg:hidden flex justify-between items-center mb-4">
           <h1 className="text-xl font-bold">Dashboard</h1>
@@ -151,7 +151,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Outlet for nested routes */}
-        <div className="bg-[#f5f4f7]">
+        <div className="">
           <Outlet />
         </div>
       </div>

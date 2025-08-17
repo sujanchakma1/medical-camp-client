@@ -32,13 +32,13 @@ const UserHome = () => {
       <p className="text-gray-600">Here's your activity summary:</p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-        <div className="bg-blue-100 rounded-xl p-5 shadow-md">
-          <p className="text-gray-700">Registered Camps</p>
-          <h2 className="text-2xl font-semibold">{totalRegisteredCamps}</h2>
+        <div className="rounded-xl p-5 shadow-md">
+          <p className="font-bold">Registered Camps</p>
+          <h2 className="text-2xl font-medium">{totalRegisteredCamps}</h2>
         </div>
-        <div className="bg-green-100 rounded-xl p-5 shadow-md">
-          <p className="text-gray-700">Confirmed Camps</p>
-          <h2 className="text-2xl font-semibold">{confirmedCamps}</h2>
+        <div className="rounded-xl p-5 shadow-md">
+          <p className="font-bold">Confirmed Camps</p>
+          <h2 className="text-2xl font-medium ">{confirmedCamps}</h2>
         </div>
       </div>
     </div>

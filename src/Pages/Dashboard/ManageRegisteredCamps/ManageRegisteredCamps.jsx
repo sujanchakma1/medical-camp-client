@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useMutation } from "@tanstack/react-query";
 import Loading from "../../Loading/Loading";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../Hook/UseAxiosSecure";
 
 const ManageRegisteredCamps = () => {
   const axiosSecure = useAxiosSecure();
@@ -93,7 +93,7 @@ const ManageRegisteredCamps = () => {
           placeholder="Search by Camp Name"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="input input-bordered w-full"
+          className="input input-bordered w-2/3 rounded-2xl"
         />
         <button onClick={handleSearch} className="btn rounded-full btn-primary">
           Search
@@ -104,13 +104,11 @@ const ManageRegisteredCamps = () => {
         <Loading />
       ) : (
         <div className="">
-          <table className="table w-full overflow-x-auto">
-            <thead className="bg-gray-100">
+          <table className="table overflow-x-auto">
+            <thead className="">
               <tr>
                 <th>#</th>
                 <th>Camp Name</th>
-                <th>Camp Fees</th>
-                <th>Participant Name</th>
                 <th>Email</th>
                 <th>Payment</th>
                 <th>Confirmation</th>
@@ -119,11 +117,9 @@ const ManageRegisteredCamps = () => {
             </thead>
             <tbody>
               {registeredCamps.map((camp, index) => (
-                <tr key={camp._id} className="hover:bg-gray-50">
+                <tr key={camp._id} className="">
                   <td>{index + 1}</td>
                   <td>{camp.camp_name}</td>
-                  <td>৳{camp.camp_fees}</td>
-                  <td>{camp.participant_name}</td>
                   <td>{camp.participant_email}</td>
                   <td>
                     <span

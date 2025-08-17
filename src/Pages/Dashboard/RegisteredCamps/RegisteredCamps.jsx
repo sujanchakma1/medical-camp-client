@@ -2,9 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { FaCheckCircle, FaTimesCircle, FaStar } from "react-icons/fa";
 import { Link } from "react-router";
 import useAuth from "../../../Hook/useAuth";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../Hook/UseAxiosSecure";
 
 const RegisteredCamps = () => {
   const { user } = useAuth();
@@ -42,7 +42,7 @@ const RegisteredCamps = () => {
       <h2 className="text-3xl font-bold text-center mb-6">Registered Camps</h2>
       <div className="overflow-x-auto">
         <table className="table">
-          <thead className="bg-primary text-white">
+          <thead className="">
             <tr>
               <th className="px-4 py-2">Camp Name</th>
               <th className="px-4 py-2">Fees</th>
@@ -57,7 +57,7 @@ const RegisteredCamps = () => {
             {camps.map((camp) => (
               <tr
                 key={camp._id}
-                className=" border-b border-gray-400"
+                className=""
               >
                 <td className="px-4 py-2">{camp.camp_name}</td>
                 <td className="px-4 py-2">৳{camp.camp_fees}</td>

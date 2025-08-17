@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { FaTrash, FaMoneyCheckAlt } from "react-icons/fa";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import useAuth from "../../../Hook/useAuth";
 import Loading from "../../Loading/Loading";
 import { useNavigate } from "react-router";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../Hook/UseAxiosSecure";
 
 const MyCamp = () => {
   const axiosSecure = useAxiosSecure();
@@ -72,7 +72,7 @@ const MyCamp = () => {
       </h2>
       <div className="">
         <table className="table table-zebra overflow-x-auto w-full text-left">
-          <thead className="bg-primary text-white">
+          <thead className="">
             <tr>
               <th>Camp Name</th>
               <th>Fees</th>
@@ -83,7 +83,7 @@ const MyCamp = () => {
           </thead>
           <tbody>
             {myCamps.map((camp) => (
-              <tr key={camp._id} className="border-b border-gray-400">
+              <tr key={camp._id} className="">
                 <td>{camp.camp_name}</td>
                 <td>৳{camp.camp_fees}</td>
                 <td>{camp.payment_status}</td>
