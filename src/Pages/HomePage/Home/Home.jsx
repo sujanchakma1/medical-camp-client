@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet-async";
 import LatestCamp from "../LatestCamp/LatestCamp";
 import Newsletter from "../Newsletter/Newsletter";
 import CommunityMessage from "../CommunityMessage/CommunityMessage";
-import CountdownTimer from "../CountdownTimer/CountdownTimer";
+import KeyStats from "../KeyStats/KeyStats";
 
 const Home = () => {
   return (
@@ -26,7 +26,7 @@ const Home = () => {
         data-aos-duration="800"
       ></HomepageFeedback>
       <CommunityMessage></CommunityMessage>
-      <CountdownTimer></CountdownTimer>
+      <KeyStats></KeyStats>
       <Newsletter></Newsletter>
     </div>
   );
