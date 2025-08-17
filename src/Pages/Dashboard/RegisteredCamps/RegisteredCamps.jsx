@@ -46,7 +46,6 @@ const RegisteredCamps = () => {
             <tr>
               <th className="px-4 py-2">Camp Name</th>
               <th className="px-4 py-2">Fees</th>
-              <th className="px-4 py-2">Participant</th>
               <th className="px-4 py-2">Payment</th>
               <th className="px-4 py-2">Confirmation</th>
               <th className="px-4 py-2">Feedback</th>
@@ -61,7 +60,6 @@ const RegisteredCamps = () => {
               >
                 <td className="px-4 py-2">{camp.camp_name}</td>
                 <td className="px-4 py-2">৳{camp.camp_fees}</td>
-                <td className="px-4 py-2">{camp.participant_name}</td>
                 <td className="px-4 py-2">
                   {camp.payment_status === "Paid" ? (
                     <span className="text-green-600 font-bold">

@@ -32,19 +32,18 @@ const PaymentHistory = () => {
       <h2 className="text-3xl text-center font-bold mb-5">Payment History</h2>
       <div className="">
         <table className="table table-zebra overflow-x-auto w-full text-left">
-          <thead className="bg-primary text-white">
+          <thead className="">
             <tr>
               <th className="px-4 py-2">Camp Name</th>
               <th className="px-4 py-2">Fees</th>
               <th className="px-4 py-2">Payment Status</th>
               <th className="px-4 py-2">Confirmation</th>
-              <th className="px-4 py-2">Transaction ID</th>
               <th className="px-4 py-2">Paid At</th>
             </tr>
           </thead>
           <tbody>
             {payments.map((data) => (
-              <tr key={data.transactionId} className="border-b border-gray-400">
+              <tr key={data.transactionId}>
                 <td className="px-4 py-2">{data.camp_name}</td>
                 <td className="px-4 py-2">৳{data.camp_fees}</td>
                 <td className="px-4 py-2 text-green-600 font-semibold">
@@ -61,7 +60,6 @@ const PaymentHistory = () => {
                     </span>
                   )}
                 </td>
-                <td className="px-4 py-2 text-sm">{data.transactionId}</td>
                 <td className="px-4 py-2 text-sm">
                   {new Date(data.paid_at).toLocaleString()}
                 </td>
