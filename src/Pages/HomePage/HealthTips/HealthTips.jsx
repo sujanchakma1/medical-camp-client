@@ -17,9 +17,9 @@ const HealthTips = () => {
     <section
       data-aos="fade-up"
       data-aos-anchor-placement="top-bottom"
-      className=" px-4 max-w-6xl mx-auto"
+      className="py-5 max-w-6xl mx-auto"
     >
-      <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
+      <h2 className="text-3xl font-bold mb-8 text-center">
         Health Awareness & Tips
       </h2>
 
@@ -27,9 +27,9 @@ const HealthTips = () => {
         {tips.map((tip, index) => (
           <div
             key={index}
-            className="bg-gradient-to-b from-gray-50 to-gray-200 rounded-xl p-5 shadow-sm hover:shadow-xl hover:scale-102 transition-all"
+            className="bg-base-200 rounded-xl p-5 shadow-md hover:shadow-xl hover:scale-102 transition-all"
           >
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+            <h3 className="text-xl font-semibold text-gray-600 mb-2">
               {tip.title}
             </h3>
             <p className="text-gray-600 text-sm mb-3">{tip.shortDescription}</p>

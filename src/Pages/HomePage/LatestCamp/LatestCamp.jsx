@@ -7,7 +7,7 @@ import { FaCircleRight } from "react-icons/fa6";
 import Aos from "aos";
 import useAxiosSecure from "../../../Hook/UseAxiosSecure";
 
-const PopularCamp = () => {
+const LatestCamp = () => {
   const axiosSecure = useAxiosSecure();
   useEffect(() => {
     Aos.init({ duration: 2000, once: false });
@@ -20,7 +20,7 @@ const PopularCamp = () => {
   } = useQuery({
     queryKey: ["popular-camps"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/popular-camps");
+      const res = await axiosSecure.get("/recent-camps");
       return res.data;
     },
   });
@@ -35,10 +35,10 @@ const PopularCamp = () => {
     <div
       data-aos="fade-up"
       data-aos-anchor-placement="top-bottom"
-      className="py-10 max-w-6xl mx-auto"
+      className="max-w-6xl mx-auto"
     >
       <h2 className="text-3xl font-bold text-center mb-8">
-        Popular Medical Camps
+        Latest Medical Camps
       </h2>
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {camps.map((camp, index) => (
@@ -48,7 +48,7 @@ const PopularCamp = () => {
           >
             {/* ✅ Badge top-right */}
             <div className="absolute top-2 right-2">
-              <div className="badge badge-warning">Popular</div>
+              <div className="badge badge-warning">Latest</div>
             </div>
 
             <img
@@ -91,4 +91,4 @@ const PopularCamp = () => {
   );
 };
 
-export default PopularCamp;
+export default LatestCamp;

@@ -64,6 +64,9 @@ const Navbar = () => {
               </NavLink>
             )}
           </li>
+          <li className="hover:text-primary text-sm">
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </li>
         </>
       )}
     </>
@@ -160,13 +163,10 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu space-y-5 dropdown-content bg-base-300 text-black rounded-box z-1 mt-4 w-52 p-2 shadow-sm"
+                className="menu space-y-5 dropdown-content bg-base-300 rounded-box z-1 mt-4 w-52 p-2 shadow-sm"
               >
-                <li className="font-bold text-xl px-3">{user.displayName}</li>
-                <li className="font-semibold block md:hidden">
-                  <Link to="/availableCamps">Available Camps</Link>
-                </li>
-                <li className="font-bold">
+                <li className="font-semibold text-xl px-3">{user.displayName}</li>
+                <li className="font-medium">
                   <Link to="/dashboard">Dashboard</Link>
                 </li>
                 <li>

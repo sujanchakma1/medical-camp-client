@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
-import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Loading from "../Loading/Loading";
 import { Helmet } from "react-helmet-async";
 import { TbDetails } from "react-icons/tb";
 import Aos from "aos";
+import useAxiosSecure from "../../Hook/UseAxiosSecure";
 
 const AvailableCamp = () => {
   const axiosInstance = useAxiosSecure();
@@ -72,10 +72,10 @@ const AvailableCamp = () => {
       {/* 🔍 Search + Sort + Layout controls */}
       <div className="flex flex-col lg:flex-row justify-between gap-4 mb-8">
         {/* Search */}
-        <input
+  input input-bordered w-full      <input
           type="text"
           placeholder="Search by name, location, or doctor..."
-          className="input input-bordered w-full lg:max-w-md"
+          className=" lg:max-w-md"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -112,7 +112,7 @@ const AvailableCamp = () => {
         {sortedCamps.map((camp) => (
           <div
             key={camp._id}
-            className="bg-gradient-to-b from-gray-50 to-gray-200 border border-gray-200 rounded-2xl shadow-md flex flex-col overflow-hidden hover:shadow-xl hover:scale-102 transition-all"
+            className="bg-base-200 rounded-2xl shadow-md flex flex-col overflow-hidden hover:shadow-xl hover:scale-102 transition-all"
           >
             <img
               src={camp.image}
@@ -121,13 +121,13 @@ const AvailableCamp = () => {
             />
             <div className="p-5 flex flex-col gap-2 flex-grow">
               <h3 className="text-xl font-bold">{camp.camp_name}</h3>
-              <p className="text-sm text-gray-600">Fees: ৳{camp.camp_fees}</p>
-              <p className="text-sm text-gray-600">{camp.date_time}</p>
-              <p className="text-sm text-gray-600">{camp.location}</p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-500">Fees: ৳{camp.camp_fees}</p>
+              <p className="text-sm text-gray-500">{camp.date_time}</p>
+              <p className="text-sm text-gray-500">{camp.location}</p>
+              <p className="text-sm text-gray-500">
                 {camp.healthcare_professional}
               </p>
-              <p className="text-sm text-gray-700 font-medium">
+              <p className="text-sm text-gray-500 font-medium">
                 Participants: {camp.participant_count}
               </p>
 
