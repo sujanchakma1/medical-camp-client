@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
 
 const ErrorPage = () => {
   return (
@@ -27,9 +28,9 @@ const ErrorPage = () => {
       </p>
       <Link
         to="/"
-        className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+        className="btn btn-primary rounded-full"
       >
-        Back to Home
+       <MdOutlineKeyboardBackspace /> Back to Home
       </Link>
     </motion.div>
   );

@@ -6,7 +6,6 @@ import {
   FaChartBar,
   FaClipboardList,
   FaEdit,
-  FaHome,
   FaMoneyCheckAlt,
   FaPlusCircle,
   FaUserCircle,
@@ -15,6 +14,7 @@ import {
 import Logo from "../../Shared/Logo/Logo";
 import useUserRole from "../../Hook/useUserRole";
 import Loading from "../../Pages/Loading/Loading";
+import { TbLayoutDashboard } from "react-icons/tb";
 
 const DashboardLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,8 +41,8 @@ const DashboardLayout = () => {
             to="/dashboard"
             className="flex items-center gap-3 px-4 py-2 rounded-md transition-colors duration-200 hover:bg-gray-200 text-gray-700"
           >
-            <FaHome />
-            <span>Dashboard Home</span>
+            <TbLayoutDashboard />
+            <span>Overview</span>
           </Link>
           {role === "admin" && (
             <>
@@ -141,17 +141,17 @@ const DashboardLayout = () => {
       )}
 
       {/* Main Content */}
-      <div className="flex-1 max-w-6xl mx-auto">
+      <div className="flex-1">
         {/* Topbar Toggle Button for small screens */}
-        <div className="lg:hidden flex justify-between items-center mb-4">
-          <h1 className="text-xl font-bold">Dashboard</h1>
-          <button onClick={toggleSidebar} className="p-2">
+        <div className="lg:hidden flex justify-between items-center p-5">
+          <h1 className="text-2l font-bold">Dashboard</h1>
+          <button onClick={toggleSidebar} className="">
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Outlet for nested routes */}
-        <div className="">
+        <div className=" max-w-6xl mx-auto">
           <Outlet />
         </div>
       </div>

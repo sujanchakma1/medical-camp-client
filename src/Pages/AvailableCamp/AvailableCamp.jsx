@@ -72,10 +72,10 @@ const AvailableCamp = () => {
       {/* 🔍 Search + Sort + Layout controls */}
       <div className="flex flex-col lg:flex-row justify-between gap-4 mb-8">
         {/* Search */}
-  input input-bordered w-full      <input
+        <input
           type="text"
           placeholder="Search by name, location, or doctor..."
-          className=" lg:max-w-md"
+          className="input input-bordered w-full lg:max-w-md"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

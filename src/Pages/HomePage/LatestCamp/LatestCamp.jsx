@@ -18,7 +18,7 @@ const LatestCamp = () => {
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["popular-camps"],
+    queryKey: ["recent-camps"],
     queryFn: async () => {
       const res = await axiosSecure.get("/recent-camps");
       return res.data;

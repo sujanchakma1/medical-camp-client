@@ -10,9 +10,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import useAuth from "../../../Hook/useAuth";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Loading from "../../Loading/Loading";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../Hook/UseAxiosSecure";
 
 const Analytics = () => {
   const { user } = useAuth();
